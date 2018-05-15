@@ -1,67 +1,110 @@
-const packageLock = require('./package-lock.json')
+const packageLock = require('./package-lock.json');
 const package = require('./package.json');
 const fs = require('fs');
 const os = require('os');
 
-function createClosure(txt, nam, i) {
-  return `__const__ ${nam} = (function(module={}, exports={}) {
+function createClosure(txt, nam) {
+  return `__const__ ${nam} = (function(module, exports) {
   ${txt.replace(/\r?\n/g, '\r\n  ')}
   return module.exports? module.exports:exports;
-})();
-module.exports = ${nam}${i};
+})({}, {});
+module.exports = ${nam};
 `;
 };
 
 const VARSTART = '(^|[\\s!%&\\(-\\-\\/:-@\\[-\\^\\{-\\~])';
 const VARSTOP = '([\\s!%&\\(-\\/:-@\\[-\\^\\{-\\~]|$)';
-function renameFunctions(txt, lib, i) {
-  var mat = [], re = /function\s+(\w+)/g;
-  while((mat=re.exec(txt))!=null) txt = txt.replace(new RegExp(VARSTART+mat[1]+VARSTOP, 'g'), '$1'+mat[1]+i+'$2');
-  var exp = (txt.match(/module\.exports\s*=\s*(\w+)/)||[])[1];
-  if(exp==null) { exp = dep.replace(/^.*?[\-\.]/, ''); txt = createClosure(txt, exp, i); exp += i; }
-  exp = lib? exp.substring(0, exp.length-i.toString().length):exp;
-  txt = txt.replace(`function ${exp}${i}`, `function ${exp}`);
-  txt = txt.replace(new RegExp('module\\.exports\\s*=\\s*(\\w+)'), `module.exports = ${exp}`);
-  return txt;
-};
+const REKEY = new Map([
+  ['set-filterto', 'filter'],
+  ['set-findall', 'findAll'],
+  ['set-unionto', 'union'],
+]);
 
-function renameRequires(txt) {
-  var mat = [], re = /const\s+(\w+)\s*=\s*require\([\'\"](.+?)[\'\"]/g;
-  while((mat=re.exec(txt))!=null) txt = txt.replace(new RegExp(VARSTART+mat[1]+VARSTOP, 'g'), '$1'+FUNCTION.get(mat[2])+'$2');
-  txt = txt.replace(/\s*const\s+\w+\s*=\s*require\(.*/g, '');
-  return txt;
-};
+var KEYS = new Map();
+var VALUES = new Map();
+var TEXTS = new Map();
 
-function renameConstants(txt, i) {
-  var arr = null, re = /^const\s+(\w+)/g;
-  while((arr = re.exec(txt))!=null)
-    txt = txt.replace(new RegExp(arr[1], 'g'), arr[1]+i);
-  return txt;
-};
-
-var TEXT = new Map();
-var FUNCTION = new Map();
-var names = [], i = 0;
+// read text
 for(var dep in packageLock.dependencies) {
   var fil = require.resolve(dep);
   var txt = fs.readFileSync(fil, 'utf8');
-  var lib = dep in package.devDependencies;
-  txt = renameFunctions(txt, lib, i++);
-  var exp = txt.match(/module\.exports = (\w+)/)[1];
-  txt = txt.replace(/\r?\nmodule\.exports\s*=.*/g, '');
-  if(lib) names.push(exp);
-  FUNCTION.set(dep, exp);
-  TEXT.set(dep, txt);
+  TEXTS.set(dep, txt);
 }
-var z = '', i = 0;
+
+// rename re-exports
 for(var dep in packageLock.dependencies) {
-  var txt = TEXT.get(dep);
-  txt = renameRequires(txt);
-  txt = renameConstants(txt, i++);
-  txt = txt.replace(/__const__\s+/g, 'const ');
-  z += txt.trim()+os.EOL;
+  var txt = TEXTS.get(dep);
+  var mat = [], re = /module\.exports\s*=\s*require\([\'\"](.*?)[\'\"].*?([,;]\r?\n?|$)/g;
+  while((mat=re.exec(txt))!=null) { txt = txt.replace(mat[0], ''); VALUES.set(dep, '##'+mat[1]); }
+  TEXTS.set(dep, txt.trim());
 }
-for(var nam of names)
-  z += `Set.${nam} = ${nam};${os.EOL}`;
+
+// rename functions
+var i = 0;
+for(var dep in packageLock.dependencies) {
+  var txt = TEXTS.get(dep);
+  if(txt.length===0) { KEYS.set(dep, REKEY.get(dep)||exp); continue; }
+  var mat = [], re = /function\s+(\w+)/g, lib = dep in package.devDependencies;
+  while((mat=re.exec(txt))!=null) txt = txt.replace(new RegExp(VARSTART+mat[1]+VARSTOP, 'g'), `$1${mat[1]}${i}$2`);
+  var sym = (txt.match(/module\.exports\s*=\s*(\w+)/)||[])[1], exp = sym;
+  if(sym==null) { exp = dep.replace(/^.*?[\-\.]/, '')+(lib? '':i); txt = createClosure(txt, exp); }
+  else if(lib) { exp = sym.slice(0, -i.toString().length); txt = txt.replace(new RegExp(VARSTART+sym+VARSTOP, 'g'), `$1${exp}$2`); }
+  if(!KEYS.has(dep)) KEYS.set(dep, REKEY.get(dep)||exp);
+  if(!VALUES.has(dep)) VALUES.set(dep, exp);
+  TEXTS.set(dep, txt); i++;
+}
+
+// rename imports
+for(var dep in packageLock.dependencies) {
+  var txt = TEXTS.get(dep);
+  var mat = [], re = /(const|var)\s+(\w+)\s*=\s*require\([\'\"](.*?)[\'\"].*?([,;]\r?\n?|$)/g;
+  while((mat=re.exec(txt))!=null) {
+    txt = txt.replace(mat[0], '');
+    txt = txt.replace(new RegExp(VARSTART+mat[2]+VARSTOP, 'g'), '$1'+VALUES.get(mat[3])+'$2');
+  }
+  TEXTS.set(dep, txt);
+}
+
+// rename globals
+var i = 0;
+for(var dep in packageLock.dependencies) {
+  var txt = TEXTS.get(dep);
+  var mat = [], re = /^(const|var)\s+(\w+)/g;
+  while((mat=re.exec(txt))!=null) txt = txt.replace(new RegExp(VARSTART+mat[2]+VARSTOP, 'g'), `$1${mat[2]+i}$2`);
+  TEXTS.set(dep, txt); i++;
+}
+
+// fix closure
+for(var dep in packageLock.dependencies) {
+  var txt = TEXTS.get(dep);
+  txt = txt.replace(/__const__/g, 'const');
+  TEXTS.set(dep, txt);
+}
+
+// fix re-exports
+for(var dep in packageLock.dependencies) {
+  var val = VALUES.get(dep);
+  if(!val.startsWith('##')) continue;
+  VALUES.set(dep, VALUES.get(val.substring(2)));
+}
+
+// remove exports
+for(var dep in packageLock.dependencies) {
+  var txt = TEXTS.get(dep);
+  txt = txt.replace(/(^|\r?\n)module\.exports\s*=\s*.*/g, '');
+  TEXTS.set(dep, txt);
+}
+
+// add code
+var i = 0, z = '';
+for(var dep in package.devDependencies) {
+  var txt = TEXTS.get(dep).trim();
+  if(txt.length) z += `// ${i}. ${dep} (${VALUES.get(dep)})${os.EOL}${txt}${os.EOL}`;
+  i++;
+}
+
+// export symbols
+for(var dep in package.devDependencies)
+  z += `Set.${KEYS.get(dep)} = ${VALUES.get(dep)};${os.EOL}`;
 z += `module.exports = Set;${os.EOL}`;
 fs.writeFileSync('index.js', z);
