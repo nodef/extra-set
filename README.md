@@ -1,5 +1,3 @@
-# set-extra
-
 [![NPM](https://nodei.co/npm/set-extra.png)](https://nodei.co/npm/set-extra/)
 
 Extra methods for [set].<br>
