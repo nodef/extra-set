@@ -1,6 +1,6 @@
 {
-  "name": "set-extra",
-  "version": "0.1.5",
+  "name": "extra-set",
+  "version": "0.1.6",
   "description": "Extra methods for set.",
   "main": "index.js",
   "scripts": {
@@ -8,42 +8,43 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nodef/set-extra.git"
+    "url": "git+https://github.com/extra-set/extra-set.git"
   },
   "keywords": [
+    "extra",
     "set",
-    "extra"
+    "merferry"
   ],
   "author": "wolfram77@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nodef/set-extra/issues"
+    "url": "https://github.com/extra-set/extra-set/issues"
   },
-  "homepage": "https://github.com/nodef/set-extra#readme",
+  "homepage": "https://github.com/extra-set/extra-set#readme",
   "devDependencies": {
-    "set-addall": "^0.1.2",
-    "set-addarray": "^0.1.2",
-    "set-all": "^0.1.1",
-    "set-any": "^0.1.1",
-    "set-average": "^0.1.1",
-    "set-concat": "^0.1.3",
-    "set-contains": "^0.1.1",
-    "set-deleteall": "^0.1.1",
-    "set-equal": "^0.1.3",
-    "set-every": "^0.1.1",
-    "set-filterto": "^0.1.1",
-    "set-find": "^0.1.1",
-    "set-findall": "^0.1.1",
-    "set-foreach": "^0.1.1",
-    "set-intersection": "^0.1.1",
-    "set-is": "^0.1.2",
-    "set-mapto": "^0.1.1",
-    "set-max": "^0.1.1",
-    "set-min": "^0.1.1",
-    "set-reduce": "^0.1.1",
-    "set-shift": "^0.1.2",
-    "set-some": "^0.1.1",
-    "set-sum": "^0.1.1",
-    "set-unionto": "^0.1.1"
+    "@extra-set/add-all": "^1.0.1",
+    "@extra-set/add-array": "^1.0.1",
+    "@extra-set/all": "^1.0.1",
+    "@extra-set/any": "^1.0.1",
+    "@extra-set/average": "^1.0.1",
+    "@extra-set/concat": "^1.0.1",
+    "@extra-set/contains": "^1.0.1",
+    "@extra-set/delete-all": "^1.0.1",
+    "@extra-set/equal": "^1.0.2",
+    "@extra-set/every": "^1.0.1",
+    "@extra-set/filter": "^1.0.1",
+    "@extra-set/find": "^1.0.1",
+    "@extra-set/find-all": "^1.0.1",
+    "@extra-set/for-each": "^1.0.1",
+    "@extra-set/intersection": "^1.0.1",
+    "@extra-set/is": "^1.0.1",
+    "@extra-set/map": "^1.0.1",
+    "@extra-set/max": "^1.0.1",
+    "@extra-set/min": "^1.0.1",
+    "@extra-set/reduce": "^1.0.1",
+    "@extra-set/shift": "^1.0.1",
+    "@extra-set/some": "^1.0.1",
+    "@extra-set/sum": "^1.0.1",
+    "@extra-set/union": "^1.0.1"
   }
 }
