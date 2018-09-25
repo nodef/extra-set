@@ -1,3 +1,6 @@
+# set-extra
+
+> [set-extra](https://www.npmjs.com/package/set-extra) was renamed to [extra-set](https://www.npmjs.com/package/extra-set).
 [![NPM](https://nodei.co/npm/set-extra.png)](https://nodei.co/npm/set-extra/)
 
 Extra methods for [set].<br>
