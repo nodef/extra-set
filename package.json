@@ -1,6 +1,6 @@
 {
   "name": "extra-set",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Extra methods for Set.",
   "main": "index.js",
   "scripts": {
