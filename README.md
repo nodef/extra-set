@@ -1,8 +1,8 @@
 Extra methods for [Set].<br>
-Browserified, minified module: [set-extra.min].
+Browserified, minified module: [extra-set.min].
 
 ```javascript
-const Set = require('set-extra');
+const Set = require('extra-set');
 // Set.is(<value>)
 // Set.equal(<set1>, <set2>)
 // ...
@@ -46,4 +46,4 @@ Evaluate methods:
 [![nodef](https://i.imgur.com/CEoS9wX.jpg)](https://nodef.github.io)
 
 [Set]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
-[set-extra.min]: https://www.npmjs.com/package/@extra-set/extra.min
+[extra-set.min]: https://www.npmjs.com/package/extra-set.min
