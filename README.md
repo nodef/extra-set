@@ -1,9 +1,8 @@
-Extra methods for [set].<br>
-Browserified, minified module: [extra-set.min].
+Extra methods for [Set].<br>
+Browserified, minified module: [set-extra.min].
 
 ```javascript
-const extra = require('extra-set');
-// -> updated Set constructor
+const Set = require('set-extra');
 // Set.is(<value>)
 // Set.equal(<set1>, <set2>)
 // ...
@@ -44,5 +43,5 @@ Evaluate methods:
 - [average](https://www.npmjs.com/package/@extra-set/average)
 
 
-[set]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
-[extra-set.min]: https://www.npmjs.com/package/extra-set.min
+[Set]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+[set-extra.min]: https://www.npmjs.com/package/@extra-set/extra.min
