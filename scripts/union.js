@@ -1,4 +1,4 @@
-const addAll = require('set-addall');
+const addAll = require('./add-all');
 function unionTo(sa, sb, z=new Set()) {
   if(z!==sa) addAll(z, sa);
   if(z!==sb) addAll(z, sb);

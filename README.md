@@ -43,5 +43,7 @@ Evaluate methods:
 - [average](https://www.npmjs.com/package/@extra-set/average)
 
 
+[![nodef](https://i.imgur.com/CEoS9wX.jpg)](https://nodef.github.io)
+
 [Set]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
 [set-extra.min]: https://www.npmjs.com/package/@extra-set/extra.min
