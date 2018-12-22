@@ -1,1 +1,1 @@
-module.exports = require('set-filterto');
+module.exports = require('./filter');
