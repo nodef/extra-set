@@ -1,11 +1,11 @@
 {
   "name": "extra-set",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Extra methods for Set.",
   "main": "index.js",
   "scripts": {
     "prepublishOnly": "node ./prepublish",
-    "browserify": "browserify index.js -o index.web.js -s Integer",
+    "browserify": "browserify index.js -o index.web.js",
     "uglifyjs": "uglifyjs -c -m -o index.min.js index.web.js",
     "test": "exit"
   },
