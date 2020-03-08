@@ -31,6 +31,7 @@ set.symmetricDifference([1, 2, 3], [2, 3, 4]);
 | [difference]           | Gives a set excluding values in collections.
 | [difference$]          | Gives a set excluding values in collections.
 | [symmetricDifference]  | Gives a set with values in odd number of collections.
+| [powerset]             | Lists all subsets of a set.
 
 [![nodef](https://merferry.glitch.me/card/extra-set.svg)](https://nodef.github.io)
 
@@ -48,5 +49,6 @@ set.symmetricDifference([1, 2, 3], [2, 3, 4]);
 [difference]: https://github.com/nodef/extra-set/wiki/difference
 [difference$]: https://github.com/nodef/extra-set/wiki/difference$
 [symmetricDifference]: https://github.com/nodef/extra-set/wiki/symmetricDifference
+[powerset]: https://github.com/nodef/extra-set/wiki/powerset
 [set]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
 [extra-set.min]: https://www.npmjs.com/package/extra-set.min

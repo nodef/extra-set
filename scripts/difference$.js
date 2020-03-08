@@ -2,6 +2,7 @@
  * Gives a set excluding values in collections.
  * @param {Set} s a set (updated)
  * @param {...Iterable} cs collections
+ * @returns {Set}
  */
 function difference$(s, ...cs) {
   for(var c of cs)

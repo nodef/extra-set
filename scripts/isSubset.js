@@ -4,6 +4,7 @@ const intersection = require('./intersection');
  * Checks if set is part of all collections.
  * @param {Set} s a set
  * @param {...Iterable} cs collections
+ * @returns {boolean}
  */
 function isSubset(s, ...cs) {
   // might have better approach

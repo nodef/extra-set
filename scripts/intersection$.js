@@ -4,6 +4,7 @@ const asSets = require('./_asSets');
  * Gives a set with values in all collections.
  * @param {Set} s a set (updated)
  * @param {...Iterable} cs collections
+ * @returns {Set}
  */
 function intersection$(s, ...cs) {
   var ts = asSets(cs);

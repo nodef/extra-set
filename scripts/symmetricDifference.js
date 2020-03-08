@@ -4,6 +4,7 @@ const union = require('./union');
 /**
  * Gives a set with values in odd number of collections.
  * @param {...Iterable} cs collections
+ * @returns {Set}
  */
 function symmetricDifference(...cs) {
   var s = union(...cs);

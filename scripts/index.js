@@ -10,3 +10,4 @@ exports.intersection$ = require('./intersection$');
 exports.difference = require('./difference');
 exports.difference$ = require('./difference$');;
 exports.symmetricDifference = require('./symmetricDifference');
+exports.powerset = require('./powerset');
