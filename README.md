@@ -2,9 +2,17 @@ A [set] is a collection of unique values.
 
 ```javascript
 const set = require('extra-set');
-// Set.is(<value>)
-// Set.equal(<set1>, <set2>)
-// ...
+
+var s = new Set([1, 2, 3, 4]);
+set.difference(s, [1, 3]);
+// Set(2) { 2, 4 }
+
+var t = new Set([2, 3]);
+set.isDisjoint(t, [4, 5]);
+// true
+
+set.symmetricDifference([1, 2, 3], [2, 3, 4]);
+// Set(2) { 1, 4 }
 ```
 
 Datatype methods:
