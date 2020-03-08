@@ -1,5 +1,5 @@
 /**
- * Gives a set without all elements in collections.
+ * Gives a set excluding values in collections.
  * @param {Set} s a set (updated)
  * @param {...Iterable} cs collections
  */

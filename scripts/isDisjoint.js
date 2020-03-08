@@ -1,7 +1,7 @@
 const intersection = require('./intersection');
 
 /**
- * Checks if collections have no element in common.
+ * Checks if collections have no value in common.
  * @param {...Iterable} cs collections
  */
 function isDisjoint(...cs) {

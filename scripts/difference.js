@@ -1,7 +1,7 @@
 const difference$ = require('./difference$');
 
 /**
- * Gives a set without all elements in collections.
+ * Gives a set excluding values in collections.
  * @param {Iterable} s a set
  * @param {...Iterable} cs collections
  */

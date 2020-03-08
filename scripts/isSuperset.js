@@ -1,7 +1,7 @@
 const union = require('./union');
 
 /**
- * Checks if elements of all collections are present in set.
+ * Checks if all collections are part of set.
  * @param {Set} s a set
  * @param {...Iterable} cs collections
  */

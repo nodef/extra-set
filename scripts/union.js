@@ -1,7 +1,7 @@
 const union$ = require('./union$');
 
 /**
- * Gives a set with all elements from collections.
+ * Gives a set with values from all collections.
  * @param {...Iterable} cs collections
  */
 function union(...cs) {

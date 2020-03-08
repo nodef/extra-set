@@ -1,7 +1,7 @@
 const intersection = require('./intersection');
 
 /**
- * Checks if elements of set are present in all collections.
+ * Checks if set is part of all collections.
  * @param {Set} s a set
  * @param {...Iterable} cs collections
  */

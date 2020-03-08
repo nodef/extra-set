@@ -1,5 +1,5 @@
 /**
- * Gives a set with all elements from collections.
+ * Gives a set with values from all collections.
  * @param {Set} s a set (updated)
  * @param {...Iterable} cs collections
  */

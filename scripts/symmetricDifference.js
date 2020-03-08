@@ -2,7 +2,7 @@ const asSets = require('./_asSets');
 const union = require('./union');
 
 /**
- * Gives a set with elements in odd no. of collections.
+ * Gives a set with values in odd number of collections.
  * @param {...Iterable} cs collections
  */
 function symmetricDifference(...cs) {

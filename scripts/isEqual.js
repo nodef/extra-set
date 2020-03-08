@@ -1,5 +1,5 @@
 /**
- * Checks if two sets have the same elements.
+ * Checks if two sets have the same values.
  * @param {Set} s a set
  * @param {Set} t another set
  */

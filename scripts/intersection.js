@@ -1,7 +1,7 @@
 const intersection$ = require('./intersection$');
 
 /**
- * Gives a set with elements in all collections.
+ * Gives a set with values in all collections.
  * @param {...Iterable} cs collections
  */
 function intersection(...cs) {

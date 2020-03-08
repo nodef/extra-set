@@ -6,7 +6,7 @@ function is(x) {
   return x instanceof Set;
 }
 /**
- * Checks if two sets have the same elements.
+ * Checks if two sets have the same values.
  * @param {Set} s a set
  * @param {Set} t another set
  */
@@ -23,7 +23,7 @@ function asSets(cs) {
   return a;
 }
 /**
- * Gives a set with elements in all collections.
+ * Gives a set with values in all collections.
  * @param {Set} s a set (updated)
  * @param {...Iterable} cs collections
  */
@@ -36,7 +36,7 @@ function intersection$(s, ...cs) {
   return s;
 }
 /**
- * Gives a set with elements in all collections.
+ * Gives a set with values in all collections.
  * @param {...Iterable} cs collections
  */
 function intersection(...cs) {
@@ -45,7 +45,7 @@ function intersection(...cs) {
   return intersection$(s, ...cs);
 }
 /**
- * Checks if elements of set are present in all collections.
+ * Checks if set is part of all collections.
  * @param {Set} s a set
  * @param {...Iterable} cs collections
  */
@@ -54,7 +54,7 @@ function isSubset(s, ...cs) {
   return intersection(s, ...cs).size===s;
 }
 /**
- * Gives a set with all elements from collections.
+ * Gives a set with values from all collections.
  * @param {Set} s a set (updated)
  * @param {...Iterable} cs collections
  */
@@ -65,14 +65,14 @@ function union$(s, ...cs) {
   return s;
 }
 /**
- * Gives a set with all elements from collections.
+ * Gives a set with values from all collections.
  * @param {...Iterable} cs collections
  */
 function union(...cs) {
   return union$(new Set(), ...cs);
 }
 /**
- * Checks if elements of all collections are present in set.
+ * Checks if all collections are part of set.
  * @param {Set} s a set
  * @param {...Iterable} cs collections
  */
@@ -81,7 +81,7 @@ function isSuperset(s, ...cs) {
   return union(s, ...cs).size===s;
 }
 /**
- * Checks if collections have no element in common.
+ * Checks if collections have no value in common.
  * @param {...Iterable} cs collections
  */
 function isDisjoint(...cs) {
@@ -89,7 +89,7 @@ function isDisjoint(...cs) {
   return intersection(...cs).size===0;
 }
 /**
- * Gives a set without all elements in collections.
+ * Gives a set excluding values in collections.
  * @param {Set} s a set (updated)
  * @param {...Iterable} cs collections
  */
@@ -100,7 +100,7 @@ function difference$(s, ...cs) {
   return s;
 }
 /**
- * Gives a set without all elements in collections.
+ * Gives a set excluding values in collections.
  * @param {Iterable} s a set
  * @param {...Iterable} cs collections
  */
@@ -108,7 +108,7 @@ function difference(s, ...cs) {
   return difference$(new Set(s), cs);
 }
 /**
- * Gives a set with elements in odd no. of collections.
+ * Gives a set with values in odd number of collections.
  * @param {...Iterable} cs collections
  */
 function symmetricDifference(...cs) {
