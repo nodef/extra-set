@@ -118,7 +118,7 @@ function scatterPackage(pth, o) {
   var tmp = tempy.directory();
   var [dir, fil, ext] = pathSplit(pth);
   var src = packageRoot(pth);
-  var nam = fil.replace(/\$/g, 'Bang');
+  var nam = fil.replace(/\$/g, 'Update');
   var json_src = path.join(src, 'package.json');
   var readme = path.join(tmp, 'README.md');
   var index = path.join(tmp, 'index'+ext);

@@ -1,6 +1,26 @@
 Extra methods for [Set].<br>
 Browserified, minified module: [extra-set.min].
 
+
+- set.equal
+- set.take (shift)
+- set.filter$
+- iterable.find
+- iterable.findAll
+- iterable.some
+- iterable.every
+- iterable.map
+- iterable.reduce
+- iterable.sum
+- iterable.min
+- iterable.max
+- iterable.all
+- iterable.any
+- iterable.filter
+- iterable.average
+- iterable.foreach
+
+
 ```javascript
 const Set = require('extra-set');
 // Set.is(<value>)
