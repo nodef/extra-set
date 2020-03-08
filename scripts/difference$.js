@@ -1,7 +1,7 @@
 /**
  * Gives a set without all elements in collections.
  * @param {Set} s a set (updated)
- * @param  {...Iterable} cs collections
+ * @param {...Iterable} cs collections
  */
 function difference$(s, ...cs) {
   for(var c of cs)
