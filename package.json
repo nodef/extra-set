@@ -1,7 +1,7 @@
 {
   "name": "extra-set",
-  "version": "2.0.7",
-  "description": "Extra methods for Set.",
+  "version": "2.0.8",
+  "description": "A set is a collection of unique values.",
   "main": "index.js",
   "scripts": {
     "test": "exit"
@@ -9,12 +9,15 @@
   "keywords": [
     "extra",
     "set",
-    "standard",
-    "utility",
-    "method",
-    "manipulation",
-    "function",
-    "merferry"
+    "is",
+    "equal",
+    "subset",
+    "superset",
+    "disjoint",
+    "union",
+    "intersection",
+    "difference",
+    "symmetric"
   ],
   "repository": {
     "type": "git",
