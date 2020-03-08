@@ -7,6 +7,6 @@ const union = require('./union');
  */
 function isSuperset(s, ...cs) {
   // can it be better?
-  return union(s, ...cs).size===s;
+  return union(s, ...cs).size===s.size;
 }
 module.exports = isSuperset;

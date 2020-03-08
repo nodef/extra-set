@@ -1,5 +1,5 @@
 /**
- * Checks if value is set.
+ * Checks if value is a set.
  * @param {*} x a value
  */
 function is(x) {
@@ -51,7 +51,7 @@ function intersection(...cs) {
  */
 function isSubset(s, ...cs) {
   // might have better approach
-  return intersection(s, ...cs).size===s;
+  return intersection(s, ...cs).size===s.size;
 }
 /**
  * Gives a set with values from all collections.
@@ -61,7 +61,7 @@ function isSubset(s, ...cs) {
 function union$(s, ...cs) {
   for (var c of cs)
     for(var v of c)
-      s.set(v);
+      s.add(v);
   return s;
 }
 /**
@@ -78,7 +78,7 @@ function union(...cs) {
  */
 function isSuperset(s, ...cs) {
   // can it be better?
-  return union(s, ...cs).size===s;
+  return union(s, ...cs).size===s.size;
 }
 /**
  * Checks if collections have no value in common.
@@ -105,7 +105,7 @@ function difference$(s, ...cs) {
  * @param {...Iterable} cs collections
  */
 function difference(s, ...cs) {
-  return difference$(new Set(s), cs);
+  return difference$(new Set(s), ...cs);
 }
 /**
  * Gives a set with values in odd number of collections.
@@ -118,7 +118,7 @@ function symmetricDifference(...cs) {
     var n = 0;
     for(var t of ts)
       if(t.has(v)) n++;
-    if(n & 1===0) s.delete(v);
+    if((n & 1)===0) s.delete(v);
   }
   return s;
 }

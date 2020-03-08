@@ -1,5 +1,10 @@
+- functionset
+- set.randomelement
 - set.take (pop/shift)
 - set.filter$
+- set.powerset
+- set.propersubset
+- set.propersuperset
 - iterable.find
 - iterable.findAll
 - iterable.some
@@ -14,4 +19,4 @@
 - iterable.filter
 - iterable.average
 - iterable.foreach
-
+- iterable.product

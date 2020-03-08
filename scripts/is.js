@@ -1,5 +1,5 @@
 /**
- * Checks if value is set.
+ * Checks if value is a set.
  * @param {*} x a value
  */
 function is(x) {

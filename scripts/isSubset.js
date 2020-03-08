@@ -7,6 +7,6 @@ const intersection = require('./intersection');
  */
 function isSubset(s, ...cs) {
   // might have better approach
-  return intersection(s, ...cs).size===s;
+  return intersection(s, ...cs).size===s.size;
 }
 module.exports = isSubset;

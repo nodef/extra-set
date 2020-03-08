@@ -6,6 +6,6 @@ const difference$ = require('./difference$');
  * @param {...Iterable} cs collections
  */
 function difference(s, ...cs) {
-  return difference$(new Set(s), cs);
+  return difference$(new Set(s), ...cs);
 }
 module.exports = difference;

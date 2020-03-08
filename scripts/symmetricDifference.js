@@ -12,7 +12,7 @@ function symmetricDifference(...cs) {
     var n = 0;
     for(var t of ts)
       if(t.has(v)) n++;
-    if(n & 1===0) s.delete(v);
+    if((n & 1)===0) s.delete(v);
   }
   return s;
 }

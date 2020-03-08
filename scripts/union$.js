@@ -6,7 +6,7 @@
 function union$(s, ...cs) {
   for (var c of cs)
     for(var v of c)
-      s.set(v);
+      s.add(v);
   return s;
 }
 module.exports = union$;
