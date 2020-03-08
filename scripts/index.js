@@ -1,3 +1,8 @@
+exports.is = require('./is');
+exports.isEqual = require('./isEqual');
+exports.isSubset = require('./isSubset');
+exports.isSuperset = require('./isSuperset');
+exports.isDisjoint = require('./isDisjoint');
 exports.union = require('./union');
 exports.union$ = require('./union$');
 exports.intersection = require('./intersection');

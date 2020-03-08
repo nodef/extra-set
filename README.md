@@ -2,8 +2,7 @@ Extra methods for [Set].<br>
 Browserified, minified module: [extra-set.min].
 
 
-- set.equal
-- set.take (shift)
+- set.take (pop/shift)
 - set.filter$
 - iterable.find
 - iterable.findAll
