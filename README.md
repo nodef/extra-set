@@ -1,27 +1,7 @@
-Extra methods for [Set].<br>
-Browserified, minified module: [extra-set.min].
-
-
-- set.take (pop/shift)
-- set.filter$
-- iterable.find
-- iterable.findAll
-- iterable.some
-- iterable.every
-- iterable.map
-- iterable.reduce
-- iterable.sum
-- iterable.min
-- iterable.max
-- iterable.all
-- iterable.any
-- iterable.filter
-- iterable.average
-- iterable.foreach
-
+A [set] is a collection of unique values.
 
 ```javascript
-const Set = require('extra-set');
+const set = require('extra-set');
 // Set.is(<value>)
 // Set.equal(<set1>, <set2>)
 // ...
