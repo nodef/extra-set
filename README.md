@@ -31,7 +31,7 @@ set.symmetricDifference([1, 2, 3], [2, 3, 4]);
 | [difference]           | Gives a set excluding values in collections.
 | [difference$]          | Gives a set excluding values in collections.
 | [symmetricDifference]  | Gives a set with values in odd number of collections.
-| [powerset]             | Lists all subsets of a set.
+| [subsets]              | Lists all subsets of a set.
 
 [![nodef](https://merferry.glitch.me/card/extra-set.svg)](https://nodef.github.io)
 
