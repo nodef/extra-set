@@ -1,14 +1,9 @@
 - functionset
+- flat
 - set.randomelement
-- set.take (pop/shift)
-- set.propersubset
-- set.propersuperset
 - iterable.sum
 - iterable.min
 - iterable.max
-- iterable.all
-- iterable.any
-- iterable.filter
 - iterable.average
 - iterable.foreach
 - iterable.product
