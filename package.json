@@ -1,6 +1,6 @@
 {
   "name": "extra-set",
-  "version": "2.0.14",
+  "version": "2.0.15",
   "description": "A set is a collection of unique values.",
   "main": "index.js",
   "scripts": {
@@ -30,6 +30,7 @@
   "author": "wolfram77@gmail.com",
   "license": "MIT",
   "devDependencies": {
+    "@extra-array/permutation-update": "^2.4.4",
     "find-npm-prefix": "^1.0.2",
     "recast": "^0.18.7",
     "tempy": "^0.4.0"

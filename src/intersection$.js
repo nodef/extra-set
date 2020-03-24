@@ -1,17 +1,17 @@
-const asSets = require('./_asSets');
+const tosets = require('./_tosets');
 
 /**
- * Gives a set with values in all collections.
- * @param {Set} s a set (updated)
- * @param {...Iterable} cs collections
- * @returns {Set}
+ * Gives a set with values in all lists.
+ * @param {Set} x a set (updated)
+ * @param {...Iterable} ys lists
+ * @returns {Set} x
  */
-function intersection$(s, ...cs) {
-  var ts = asSets(cs);
-  values: for(var v of s) {
+function intersection$(x, ...ys) {
+  var ts = tosets(ys);
+  x: for(var v of x) {
     for(var t of ts)
-      if(!t.has(v)) { s.delete(v); continue values; }
+      if(!t.has(v)) { x.delete(v); continue x; }
   }
-  return s;
+  return x;
 }
 module.exports = intersection$;

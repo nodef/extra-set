@@ -1,13 +1,13 @@
 /**
- * Gives a set with values from all collections.
- * @param {Set} s a set (updated)
- * @param {...Iterable} cs collections
- * @returns {Set}
+ * Gives a set with values from all lists.
+ * @param {Set} x a set (updated)
+ * @param {...Iterable} ys lists
+ * @returns {Set} x
  */
-function union$(s, ...cs) {
-  for (var c of cs)
-    for(var v of c)
-      s.add(v);
-  return s;
+function union$(x, ...ys) {
+  for (var y of ys)
+    for(var v of y)
+      x.add(v);
+  return x;
 }
 module.exports = union$;

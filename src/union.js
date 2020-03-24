@@ -1,11 +1,11 @@
 const union$ = require('./union$');
 
 /**
- * Gives a set with values from all collections.
- * @param {...Iterable} cs collections
+ * Gives a set with values from all lists.
+ * @param {...Iterable} xs lists
  * @returns {Set}
  */
-function union(...cs) {
-  return union$(new Set(), ...cs);
+function union(...xs) {
+  return union$(new Set(), ...xs);
 }
 module.exports = union;

@@ -1,13 +1,13 @@
 /**
  * Gives a set excluding values in collections.
- * @param {Set} s a set (updated)
- * @param {...Iterable} cs collections
- * @returns {Set}
+ * @param {Set} x a set (updated)
+ * @param {...Iterable} ys collections
+ * @returns {Set} x
  */
-function difference$(s, ...cs) {
-  for(var c of cs)
+function difference$(x, ...ys) {
+  for(var c of ys)
     for(var v of c)
-      s.delete(v);
-  return s;
+      x.delete(v);
+  return x;
 }
 module.exports = difference$;

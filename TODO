@@ -1,7 +1,6 @@
 - functionset
 - set.randomelement
 - set.take (pop/shift)
-- set.filter$
 - set.propersubset
 - set.propersuperset
 - iterable.find

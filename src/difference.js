@@ -1,12 +1,12 @@
 const difference$ = require('./difference$');
 
 /**
- * Gives a set excluding values in collections.
- * @param {Iterable} s a set
- * @param {...Iterable} cs collections
+ * Gives a set excluding values in all lists.
+ * @param {Iterable} x a set
+ * @param {...Iterable} ys lists
  * @returns {Set}
  */
-function difference(s, ...cs) {
-  return difference$(new Set(s), ...cs);
+function difference(x, ...ys) {
+  return difference$(new Set(x), ...ys);
 }
 module.exports = difference;

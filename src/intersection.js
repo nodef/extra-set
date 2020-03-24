@@ -1,13 +1,13 @@
 const intersection$ = require('./intersection$');
 
 /**
- * Gives a set with values in all collections.
- * @param {...Iterable} cs collections
+ * Gives a set with values in all lists.
+ * @param {...Iterable} xs lists
  * @returns {Set}
  */
-function intersection(...cs) {
-  if(cs.length===0) return new Set();
-  var s = new Set(cs.pop());
-  return intersection$(s, ...cs);
+function intersection(...xs) {
+  if(xs.length===0) return new Set();
+  var a = new Set(xs.pop());
+  return intersection$(a, ...xs);
 }
 module.exports = intersection;

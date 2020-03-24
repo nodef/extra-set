@@ -1,13 +1,12 @@
+const compare = require('./compare');
+
 /**
  * Checks if two sets have the same values.
- * @param {Set} s a set
- * @param {Set} t another set
+ * @param {Set} x a set
+ * @param {Set} y another set
  * @returns {boolean}
  */
-function isEqual(s, t) {
-  if(s.size!==t.size) return false;
-  for(var v of s)
-    if(!t.has(v)) return false;
-  return true;
+function isEqual(x, y) {
+  return compare(x, y)===0;
 }
 module.exports = isEqual;

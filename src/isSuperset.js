@@ -1,13 +1,12 @@
 const union = require('./union');
 
 /**
- * Checks if all collections are part of set.
- * @param {Set} s a set
- * @param {...Iterable} cs collections
+ * Checks if set is contained in all lists.
+ * @param {Set} x a set
+ * @param {...Iterable} ys lists
  * @returns {boolean}
  */
-function isSuperset(s, ...cs) {
-  // can it be better?
-  return union(s, ...cs).size===s.size;
+function isSuperset(x, ...ys) {
+  return union(x, ...ys).size===x.size;
 }
 module.exports = isSuperset;

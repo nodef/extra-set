@@ -1,13 +1,12 @@
 const intersection = require('./intersection');
 
 /**
- * Checks if set is part of all collections.
- * @param {Set} s a set
- * @param {...Iterable} cs collections
+ * Checks if set is part of all lists.
+ * @param {Set} x a set
+ * @param {...Iterable} ys lists
  * @returns {boolean}
  */
-function isSubset(s, ...cs) {
-  // might have better approach
-  return intersection(s, ...cs).size===s.size;
+function isSubset(x, ...ys) {
+  return intersection(x, ...ys).size===x.size;
 }
 module.exports = isSubset;
