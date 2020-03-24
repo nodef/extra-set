@@ -1,4 +1,147 @@
 /**
+ * Compares two values.
+ * @param {*} a a value
+ * @param {*} b another value
+ * @returns {number} a<b: -1, a=b: 0, a>b: 1
+ */
+function cmp(a, b) {
+  return a<b? -1:(a>b? 1:0);
+}
+/**
+ * Compares two sets.
+ * @param {Set} x a set
+ * @param {Set} y another set
+ * @returns {number} x<y: -1, x=y: 0, x>y: 1
+ */
+function compare(x, y) {
+  var X = x.size, Y = y.size;
+  if(X!==Y) return X-Y;
+  var ix = x[Symbol.iterator]();
+  var iy = x[Symbol.iterator]();
+  var fn = cmp;
+  while(true) {
+    var rx = ix.next(), ry = iy.next();
+    if(rx.done) return 0;
+    var c = fn(rx.value, ry.value);
+    if(c!==0) return c;
+  }
+}
+/**
+ * Gives a set excluding values in collections.
+ * @param {Set} x a set (updated)
+ * @param {...Iterable} ys collections
+ * @returns {Set} x
+ */
+function difference$(x, ...ys) {
+  for(var c of ys)
+    for(var v of c)
+      x.delete(v);
+  return x;
+}
+/**
+ * Gives a set excluding values in all lists.
+ * @param {Iterable} x a set
+ * @param {...Iterable} ys lists
+ * @returns {Set}
+ */
+function difference(x, ...ys) {
+  return difference$(new Set(x), ...ys);
+}
+/**
+ * Checks if all values satisfy a test.
+ * @param {Set} x a set
+ * @param {function} fn test function (v, v, x)
+ * @param {object?} ths this argument
+ * @returns {boolean}
+ */
+function every(x, fn, ths=null) {
+  for(var v of x)
+    if(!fn.call(ths, v, v, x)) return false;
+  return true;
+}
+/**
+ * Keeps values which satisfy a test.
+ * @param {Set} x a set
+ * @param {function} fn test function (v, v, x)
+ * @param {object?} ths this argument
+ * @returns {Set}
+ */
+function filter(x, fn, ths=null) {
+  var a = new Set();
+  for(var v of x)
+    if(fn.call(ths, v, v, x)) a.add(v);
+  return a;
+}
+/**
+ * Keeps values which satisfy a test.
+ * @param {Set} x a set (updated)
+ * @param {function} fn test function (v, v, x)
+ * @param {object?} ths this argument
+ * @returns {Set} x
+ */
+function filter$(x, fn, ths=null) {
+  for(var v of x)
+    if(!fn.call(ths, v, v, x)) x.delete(v);
+  return x;
+}
+/**
+ * Gets a value which satisfies a test.
+ * @param {Set} x a set
+ * @param {function} fn test function (v, v, x)
+ * @param {object?} ths this argument
+ */
+function find(x, fn, ths=null) {
+  for(var v of x)
+    if(fn.call(ths, v, v, x)) return x;
+}
+function tosets(cs) {
+  var a = [];
+  for(var c of cs)
+    a.push(c instanceof Set? c : new Set(c));
+  return a;
+}
+/**
+ * Gives a set with values in all lists.
+ * @param {Set} x a set (updated)
+ * @param {...Iterable} ys lists
+ * @returns {Set} x
+ */
+function intersection$(x, ...ys) {
+  var ts = tosets(ys);
+  x: for(var v of x) {
+    for(var t of ts)
+      if(!t.has(v)) { x.delete(v); continue x; }
+  }
+  return x;
+}
+/**
+ * Gives a set with values in all lists.
+ * @param {...Iterable} xs lists
+ * @returns {Set}
+ */
+function intersection(...xs) {
+  if(xs.length===0) return new Set();
+  var a = new Set(xs.pop());
+  return intersection$(a, ...xs);
+}
+/**
+ * Checks if lists have no value in common.
+ * @param {...Iterable} xs lists
+ * @returns {boolean}
+ */
+function isDisjoint(...xs) {
+  return intersection(...xs).size===0;
+}
+/**
+ * Checks if two sets have the same values.
+ * @param {Set} x a set
+ * @param {Set} y another set
+ * @returns {boolean}
+ */
+function isEqual(x, y) {
+  return compare(x, y)===0;
+}
+/**
  * Checks if value is a set.
  * @param {*} x a value
  * @returns {boolean}
@@ -7,125 +150,204 @@ function is(x) {
   return x instanceof Set;
 }
 /**
- * Checks if two sets have the same values.
- * @param {Set} s a set
- * @param {Set} t another set
+ * Checks if set is part of all lists.
+ * @param {Set} x a set
+ * @param {...Iterable} ys lists
  * @returns {boolean}
  */
-function isEqual(s, t) {
-  if(s.size!==t.size) return false;
-  for(var v of s)
-    if(!t.has(v)) return false;
-  return true;
+function isSubset(x, ...ys) {
+  return intersection(x, ...ys).size===x.size;
 }
-function asSets(cs) {
-  var a = []
-  for(var c of cs)
-    a.push(c instanceof Set? c : new Set(c));
+/**
+ * Gives a set with values from all lists.
+ * @param {Set} x a set (updated)
+ * @param {...Iterable} ys lists
+ * @returns {Set} x
+ */
+function union$(x, ...ys) {
+  for (var y of ys)
+    for(var v of y)
+      x.add(v);
+  return x;
+}
+/**
+ * Gives a set with values from all lists.
+ * @param {...Iterable} xs lists
+ * @returns {Set}
+ */
+function union(...xs) {
+  return union$(new Set(), ...xs);
+}
+/**
+ * Checks if set is contained in all lists.
+ * @param {Set} x a set
+ * @param {...Iterable} ys lists
+ * @returns {boolean}
+ */
+function isSuperset(x, ...ys) {
+  return union(x, ...ys).size===x.size;
+}
+/**
+ * Converts values through a mapping.
+ * @param {Set} x a set
+ * @param {function} fn map function (v, v, x)
+ * @param {object?} ths this argument
+ * @returns {Set}
+ */
+function map(x, fn, ths=null) {
+  var a = new Set();
+  for(var v of x)
+    a.add(fn.call(ths, v, v, x));
   return a;
 }
 /**
- * Gives a set with values in all collections.
- * @param {Set} s a set (updated)
- * @param {...Iterable} cs collections
- * @returns {Set}
+ * Removes a value from a set.
+ * @param {Set} x a set (updated)
+ * @returns {Array} [value, updated]
  */
-function intersection$(s, ...cs) {
-  var ts = asSets(cs);
-  values: for(var v of s) {
-    for(var t of ts)
-      if(!t.has(v)) { s.delete(v); continue values; }
+function pop(x) {
+  x = new Set(x);
+  for(var v of x) {
+    x.delete(v);
+    return [v, x];
   }
-  return s;
+  return [undefined, x];
 }
 /**
- * Gives a set with values in all collections.
- * @param {...Iterable} cs collections
- * @returns {Set}
+ * Removes a value from a set.
+ * @param {Set} x a set (updated)
+ * @returns {Array} x
  */
-function intersection(...cs) {
-  if(cs.length===0) return new Set();
-  var s = new Set(cs.pop());
-  return intersection$(s, ...cs);
+function pop$(x) {
+  for(var v of x) {
+    x.delete(v);
+    return v;
+  }
 }
 /**
- * Checks if set is part of all collections.
- * @param {Set} s a set
- * @param {...Iterable} cs collections
+ * Simplifies a set to a value.
+ * @param {Set} x a set
+ * @param {function} fn reduce function (acc, v, v, x)
+ * @param {*?} acc inital value
+ * @returns {*}
+ */
+function reduce(x, fn, acc) {
+  var al = arguments.length, i = -1;
+  for(var v of x) {
+    if(++i<0 && al<3) acc = v;
+    else acc = fn(acc, v, v, x);
+  }
+  return acc;
+}
+/**
+ * Checks if any value satisfies a test.
+ * @param {Set} x a set
+ * @param {function} fn test function (v, v, x)
+ * @param {object?} ths this argument
  * @returns {boolean}
  */
-function isSubset(s, ...cs) {
-  // might have better approach
-  return intersection(s, ...cs).size===s.size;
+function some(x, fn, ths=null) {
+  for(var v of x)
+    if(!fn.call(ths, v, v, x)) return false;
+  return true;
 }
 /**
- * Gives a set with values from all collections.
- * @param {Set} s a set (updated)
- * @param {...Iterable} cs collections
+ * Gives a random number generator.
+ * @param {number} r random seed 0->1
+ * @returns {function}
+ */
+function random(r) {
+  var a = Math.floor(r * (2 ** 31));
+  return function() {
+    var t = a += 0x6D2B79F5;
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  }
+}
+/**
+ * Rearranges values in arbitrary order.
+ * @param {Array} x an array (updated)
+ * @param {number?} n number of values (-1 => any)
+ * @param {number?} r random seed 0->1
+ * @returns {Array} x
+ */
+function permutation$(x, n=-1, r=Math.random()) {
+  if(n>x.length) return x;
+  var X = x.length, rnd = random(r);
+  var n = n>=0? n:Math.floor((X+1)*rnd());
+  for(var i=0; i<n; i++) {
+    var j = i+Math.floor((X-i)*rnd());
+    var t = x[i]; x[i] = x[j]; x[j] = t;
+  }
+  x.length = n;
+  return x;
+}
+/**
+ * Gives a random number generator.
+ * @param {number} r random seed 0->1
+ * @returns {function}
+ */
+function random25(r) {
+  var a = Math.floor(r * (2 ** 31));
+  return function() {
+    var t = a += 0x6D2B79F5;
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  }
+}
+const random26 = random25;
+
+function subsetNum(x, n, r) {
+  var a = permutation$(Array.from(x), n, r);
+  return new Set(a);
+}
+
+function subsetAny(x, r) {
+  var rnd = random26(r), a = new Set();
+  for(var v of x)
+    if(rnd()>=0.5) a.add(v);
+  return a;
+}
+
+/**
+ * Gives an arbitrary subset.
+ * @param {Set} x a set
+ * @param {number?} n number of values (-1 => any)
+ * @param {number?} r random seed 0->1
  * @returns {Set}
  */
-function union$(s, ...cs) {
-  for (var c of cs)
-    for(var v of c)
-      s.add(v);
-  return s;
+function subset(x, n=-1, r=Math.random()) {
+  var X = x.size;
+  if(n>=0) return n>X? null:subsetNum(x, n, r);
+  return subsetAny(x, r);
 }
 /**
- * Gives a set with values from all collections.
- * @param {...Iterable} cs collections
+ * Lists all subsets of a set.
+ * @param {Set} x a set
+ * @param {number?} n number of values (-1 => any)
+ * @returns {Iterable<Set>}
+ */
+function* subsets(x, n=-1) {
+  var X = x.size;
+  if(n>=X) { if(n==X) yield x; return; }
+  if(n===0 || X===0) { yield new Set(); return; }
+  var [a, y] = pop(x);
+  yield* subsets(y, n);
+  for(var s of subsets(y, n-1)) {
+    s.add(a);
+    yield s;
+  }
+}
+/**
+ * Gives a set with values in odd number of lists.
+ * @param {...Iterable} xs lists
  * @returns {Set}
  */
-function union(...cs) {
-  return union$(new Set(), ...cs);
-}
-/**
- * Checks if all collections are part of set.
- * @param {Set} s a set
- * @param {...Iterable} cs collections
- * @returns {boolean}
- */
-function isSuperset(s, ...cs) {
-  // can it be better?
-  return union(s, ...cs).size===s.size;
-}
-/**
- * Checks if collections have no value in common.
- * @param {...Iterable} cs collections
- * @returns {boolean}
- */
-function isDisjoint(...cs) {
-  // can this be improved?
-  return intersection(...cs).size===0;
-}
-/**
- * Gives a set excluding values in collections.
- * @param {Set} s a set (updated)
- * @param {...Iterable} cs collections
- * @returns {Set}
- */
-function difference$(s, ...cs) {
-  for(var c of cs)
-    for(var v of c)
-      s.delete(v);
-  return s;
-}
-/**
- * Gives a set excluding values in collections.
- * @param {Iterable} s a set
- * @param {...Iterable} cs collections
- * @returns {Set}
- */
-function difference(s, ...cs) {
-  return difference$(new Set(s), ...cs);
-}
-/**
- * Gives a set with values in odd number of collections.
- * @param {...Iterable} cs collections
- * @returns {Set}
- */
-function symmetricDifference(...cs) {
-  var s = union(...cs);
-  var ts = asSets(cs);
+function symmetricDifference(...xs) {
+  var s = union(...xs);
+  var ts = tosets(xs);
   for(var v of s) {
     var n = 0;
     for(var t of ts)
@@ -134,30 +356,27 @@ function symmetricDifference(...cs) {
   }
   return s;
 }
-/**
- * Lists all subsets of a set.
- * @param {Iterable} s a set
- * @returns {Iterable<Set>}
- */
-function* powerset(s) {
-  var a = Array.from(s);
-  for(var incl=0, I=2**a.length; incl<I; incl++) {
-    for(var v=new Set(), b=0, j=incl; j>0; b++, j>>=1)
-      if(j & 1) v.add(a[b]);
-    yield v;
-  }
-  return;
-}
-exports.is = is;
-exports.isEqual = isEqual;
-exports.isSubset = isSubset;
-exports.isSuperset = isSuperset;
-exports.isDisjoint = isDisjoint;
-exports.union = union;
-exports.union$ = union$;
+exports.compare = compare;
+exports.difference = difference;
+exports.difference$ = difference$;
+exports.every = every;
+exports.filter = filter;
+exports.filter$ = filter$;
+exports.find = find;
 exports.intersection = intersection;
 exports.intersection$ = intersection$;
-exports.difference = difference;
-exports.difference$ = difference$;;
+exports.isDisjoint = isDisjoint;
+exports.isEqual = isEqual;
+exports.is = is;
+exports.isSubset = isSubset;
+exports.isSuperset = isSuperset;
+exports.map = map;
+exports.pop = pop;
+exports.pop$ = pop$;
+exports.reduce = reduce;
+exports.some = some;
+exports.subset = subset;
+exports.subsets = subsets;
 exports.symmetricDifference = symmetricDifference;
-exports.powerset = powerset;
+exports.union = union;
+exports.union$ = union$;
