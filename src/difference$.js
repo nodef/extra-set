@@ -1,7 +1,7 @@
 /**
- * Gives a set excluding values in collections.
+ * Gives a set excluding values in all lists.
  * @param {Set} x a set (updated)
- * @param {...Iterable} ys collections
+ * @param {...Iterable} ys lists
  * @returns {Set} x
  */
 function difference$(x, ...ys) {
