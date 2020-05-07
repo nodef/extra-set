@@ -1,6 +1,6 @@
 {
   "name": "extra-set",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A set is a collection of unique values.",
   "main": "index.js",
   "scripts": {
@@ -31,6 +31,15 @@
   "license": "MIT",
   "devDependencies": {
     "@extra-array/permutation-update": "^2.4.4",
+    "@extra-iterable/count": "^2.1.26",
+    "@extra-iterable/count-on": "^2.1.26",
+    "@extra-iterable/max": "^2.1.26",
+    "@extra-iterable/max-on": "^2.1.26",
+    "@extra-iterable/min": "^2.1.26",
+    "@extra-iterable/min-on": "^2.1.26",
+    "@extra-iterable/partition-on": "^2.1.26",
+    "@extra-iterable/range": "^2.1.26",
+    "@extra-iterable/range-on": "^2.1.26",
     "find-npm-prefix": "^1.0.2",
     "recast": "^0.18.7",
     "tempy": "^0.4.0"
