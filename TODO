@@ -1,9 +1,2 @@
 - functionset
-- flat
 - set.randomelement
-- iterable.sum
-- iterable.min
-- iterable.max
-- iterable.average
-- iterable.foreach
-- iterable.product
