@@ -1,6 +1,6 @@
 {
   "name": "extra-set",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "A set is a collection of unique values.",
   "main": "index.js",
   "exports": {
@@ -40,6 +40,7 @@
   "license": "MIT",
   "devDependencies": {
     "@extra-array/permutation-update": "^2.8.22",
+    "@extra-iterable/cartesian-product": "^2.3.36",
     "@extra-iterable/count": "^2.3.36",
     "@extra-iterable/max": "^2.3.36",
     "@extra-iterable/min": "^2.3.36",

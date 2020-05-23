@@ -1,4 +1,4 @@
-import iterableCountOn from '@extra-iterable/count-on';
+import iterableCountAs from '@extra-iterable/count-as';
 import type {mapFn} from './_types';
 
 /**
@@ -9,6 +9,6 @@ import type {mapFn} from './_types';
  * @returns Map {value => count}
  */
 function countOn<T, U>(x: Iterable<T>, fn: mapFn<T, U>=null, ths: object=null): Map<T|U, number> {
-  return iterableCountOn(x, v => fn.call(ths, v, v, x));
+  return iterableCountAs(x, v => fn.call(ths, v, v, x));
 }
 export default countOn;

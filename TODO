@@ -1,2 +1,4 @@
 - functionset
 - set.randomelement
+- set.compare using array.compare
+- set.union using array.compare ...
