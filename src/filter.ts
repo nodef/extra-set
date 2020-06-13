@@ -13,5 +13,3 @@ function filter<T>(x: Set<T>, fn: testFn<T>, ths: object=null): Set<T> {
   return a;
 }
 export default filter;
-// do you want to implement filterTo here?
-// i.e., a as input argument
