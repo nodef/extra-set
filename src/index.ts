@@ -65,4 +65,3 @@ export {default as union$} from './union$';
 export {default as union} from './union';
 export {default as value} from './value';
 export {default as values} from './values';
-export {default as zip} from './zip';
