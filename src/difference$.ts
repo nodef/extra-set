@@ -1,13 +1,11 @@
 /**
- * Gives values of a set not present in others.
+ * Gives values of set not present in another.
  * @param x a set (updated)
- * @param ys other sets
+ * @param y another set
  */
-function difference$<T>(x: Set<T>, ...ys: Iterable<T>[]): Set<T> {
-  for(var y of ys) {
-    for(var v of y)
-      x.delete(v);
-  }
+function difference$<T>(x: Set<T>, y: Set<T>): Set<T> {
+  for(var v of y)
+    x.delete(v);
   return x;
 }
 export default difference$;

@@ -1,11 +1,12 @@
-import difference$ from './difference$';
-
 /**
- * Gives values of a set not present in others.
+ * Gives values of set not present in another.
  * @param x a set
- * @param ys other sets
+ * @param y another set
  */
-function difference<T>(x: Iterable<T>, ...ys: Iterable<T>[]): Set<T> {
-  return difference$(new Set<T>(x), ...ys);
+function difference<T>(x: Set<T>, y: Set<T>): Set<T> {
+  var a = new Set<T>();
+  for(var v of x)
+    if(!y.has(v)) a.add(v);
+  return a;
 }
 export default difference;

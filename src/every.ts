@@ -1,3 +1,4 @@
+import scanWhile from './scanWhile';
 import type {testFn} from './_types';
 
 /**
@@ -7,8 +8,6 @@ import type {testFn} from './_types';
  * @param ths this argument
  */
 function every<T>(x: Iterable<T>, fn: testFn<T>, ths: object=null) {
-  for(var v of x)
-    if(!fn.call(ths, v, v, x)) return false;
-  return true;
+  return scanWhile(x, fn, ths)===undefined;
 }
 export default every;
