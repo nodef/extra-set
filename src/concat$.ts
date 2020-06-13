@@ -1,7 +1,7 @@
 /**
- * Appends sets to the end.
+ * Combines values from sets.
  * @param x a set (updated)
- * @param ys sets to append
+ * @param ys other sets
  * @returns x
  */
 function concat$<T>(x: Set<T>, ...ys: Iterable<T>[]): Set<T> {

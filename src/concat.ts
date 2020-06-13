@@ -1,10 +1,10 @@
 import concat$ from './concat$';
 
 /**
- * Appends sets together.
- * @param xs sets to append
+ * Combines values from sets.
+ * @param xs sets
  */
 function concat<T>(...xs: Iterable<T>[]): Set<T> {
-  return concat$(new Set<T>(), ...xs);
+  return concat$(new Set(), ...xs);
 }
 export default concat;

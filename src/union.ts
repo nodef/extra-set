@@ -1,10 +1,11 @@
-import union$ from './union$';
+import concat$ from './concat$';
 
 /**
  * Gives values present in any set.
- * @param xs sets
+ * @param x a set
+ * @param y another set
  */
-function union<T>(...xs: Iterable<T>[]): Set<T> {
-  return union$(new Set<T>(), ...xs);
+function union<T>(x: Iterable<T>, y: Iterable<T>): Set<T> {
+  return concat$(new Set(), x, y);
 }
 export default union;
