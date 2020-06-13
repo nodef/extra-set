@@ -90,7 +90,7 @@ var x = new Set([1, 2, 3]);
 
 <br>
 
-[![nodef](https://merferry.glitch.me/card/extra-map.svg)](https://nodef.github.io)
+[![nodef](https://merferry.glitch.me/card/extra-set.svg)](https://nodef.github.io)
 
 [set]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
 [browserify]: https://www.npmjs.com/package/browserify
