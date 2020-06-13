@@ -1,6 +1,6 @@
 {
   "name": "extra-set",
-  "version": "2.1.30",
+  "version": "2.1.31",
   "description": "A set is a collection of unique values.",
   "main": "index.js",
   "exports": {
@@ -40,6 +40,7 @@
   "license": "MIT",
   "devDependencies": {
     "extra-array": "^2.8.75",
-    "extra-build": "^1.0.177"
+    "extra-build": "^1.0.177",
+    "extra-iterable": "^2.3.43"
   }
 }
