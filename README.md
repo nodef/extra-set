@@ -3,80 +3,84 @@ A [set] is a collection of unique values. [:running:] [:vhs:] [:package:] [:moon
 ```javascript
 const set = require('extra-set');
 
-var s = new Set([1, 2, 3, 4]);
-set.difference(s, [1, 3]);
-// Set(2) { 2, 4 }
+var x = new Set([1, 2, 3, 4, 5]);
+var y = new Set([2, 4]);
+set.difference(x, y);
+// Set(3) { 1, 3, 5 }
 
-var t = new Set([2, 3]);
-set.isDisjoint(t, [4, 5]);
-// true
+var x = new Set([1, 2, 3]);
+var y = new Set([3, 4]);
+set.isDisjoint(x, y);
+// false
 
-set.symmetricDifference([1, 2, 3], [2, 3, 4]);
-// Set(2) { 1, 4 }
+var x = new Set([1, 2, 3, 4]);
+var y = new Set([3, 4, 5, 6]);
+set.symmetricDifference(x, y);
+// Set(4) { 1, 2, 5, 6 }
+
+var x = new Set([1, 2, 3]);
+[...set.subsets(x)];
+// [
+//   Set(0) {},
+//   Set(1) { 1 },
+//   Set(1) { 2 },
+//   Set(2) { 1, 2 },
+//   Set(1) { 3 },
+//   Set(2) { 1, 3 },
+//   Set(2) { 2, 3 },
+//   Set(3) { 1, 2, 3 }
+// ]
 ```
 
 ### reference
 
-| Method                 | Action
-|------------------------|-------
-| [is]                   | Checks if value is set.
-| [compare]              | Compares two sets.
-| [isEqual]              | Checks if two sets are equal.
-|                        |
-| [some]                 | Checks if any value satisfies a test.
-| [every]                | Checks if all values satisfy a test.
-| [map]                  | Updates values based on map function.
-| [reduce]               | Reduces values to a single value.
-| [filter]               | Keeps values which pass a test.
-| [filter$]              | Keeps values which pass a test.
-| [find]                 | Finds a value passing the test.
-| [pop]                  | Removes a value from a set.
-| [pop$]                 | Removes a value from a set.
-|                        |
-| [isSubset]             | Checks if set has a subset.
-| [isSuperset]           | Checks if set is contained in all lists.
-| [isDisjoint]           | Checks if sets have no common values.
-| [subsets]              | Lists all possible subsets.
-|                        |
-| [union]                | Gives values present in any set.
-| [union$]               | Gives values present in any set.
-| [intersection]         | Gives values present in both sets.
-| [intersection$]        | Gives values present in both sets.
-| [difference]           | Gives values of set not present in another.
-| [difference$]          | Gives values of set not present in another.
-| [symmetricDifference]  | Gives values not present in both sets.
+| Method                | Action
+|-----------------------|-------
+| [is]                  | Checks if value is map.
+| [add]                 | Sets value at key.
+| [remove]              | Deletes an entry.
+| [size]                | Gets size of map.
+|                       | 
+| [head]                | Gets first entry.
+| [take]                | Keeps first n entries only.
+| [shift]               | Removes first entry.
+| [from]                | Creates object from entries.
+|                       | 
+| [concat]              | Combines entries from maps, preferring last.
+| [flat]                | Flattens nested map to given depth.
+| [chunk]               | Breaks map into chunks of given size.
+| [filterAt]            | Gets map with given keys.
+|                       | 
+| [map]                 | Updates values based on map function.
+| [filter]              | Keeps entries which pass a test.
+| [reduce]              | Reduces values to a single value.
+| [range]               | Finds smallest and largest entries.
+| [count]               | Counts values which satisfy a test.
+| [partition]           | Segregates values by test result.
+| [cartesianProduct]    | Lists cartesian product of maps.
+| [some]                | Checks if any value satisfies a test.
+|                       | 
+| [union]               | Gives entries present in any map.
+| [intersection]        | Gives entries present in both maps.
+| [difference]          | Gives entries of map not present in another.
+| [symmetricDifference] | Gives entries not present in both maps.
+| [isDisjoint]          | Checks if maps have no common keys.
+|                       | 
+| [value]               | Picks an arbitrary value.
+| [entry]               | Picks an arbitrary entry.
+| [subset]              | Picks an arbitrary subobject.
+|                       | 
+| [isEmpty]             | Checks if map is empty.
+| [isEqual]             | Checks if two maps are equal.
+| [compare]             | Compares two maps.
+| [find]                | Finds value of an entry passing a test.
+| [scanWhile]           | Finds key of first entry not passing a test.
 
-[![nodef](https://merferry.glitch.me/card/extra-set.svg)](https://nodef.github.io)
+<br>
 
-> Browserified, minified version of this package is [extra-set.min].
+[![nodef](https://merferry.glitch.me/card/extra-map.svg)](https://nodef.github.io)
 
-[compare]: https://github.com/nodef/extra-set/wiki/compare
-[difference]: https://github.com/nodef/extra-set/wiki/difference
-[difference$]: https://github.com/nodef/extra-set/wiki/difference$
-[every]: https://github.com/nodef/extra-set/wiki/every
-[filter]: https://github.com/nodef/extra-set/wiki/filter
-[filter$]: https://github.com/nodef/extra-set/wiki/filter$
-[find]: https://github.com/nodef/extra-set/wiki/find
-[intersection]: https://github.com/nodef/extra-set/wiki/intersection
-[intersection$]: https://github.com/nodef/extra-set/wiki/intersection$
-[isDisjoint]: https://github.com/nodef/extra-set/wiki/isDisjoint
-[isEqual]: https://github.com/nodef/extra-set/wiki/isEqual
-[is]: https://github.com/nodef/extra-set/wiki/is
-[isSubset]: https://github.com/nodef/extra-set/wiki/isSubset
-[isSuperset]: https://github.com/nodef/extra-set/wiki/isSuperset
-[map]: https://github.com/nodef/extra-set/wiki/map
-[pop]: https://github.com/nodef/extra-set/wiki/pop
-[pop$]: https://github.com/nodef/extra-set/wiki/pop$
-[reduce]: https://github.com/nodef/extra-set/wiki/reduce
-[some]: https://github.com/nodef/extra-set/wiki/some
-[subset]: https://github.com/nodef/extra-set/wiki/subset
-[subsets]: https://github.com/nodef/extra-set/wiki/subsets
-[symmetricDifference]: https://github.com/nodef/extra-set/wiki/symmetricDifference
-[union]: https://github.com/nodef/extra-set/wiki/union
-[union$]: https://github.com/nodef/extra-set/wiki/union$
 [set]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
-[extra-set.min]: https://www.npmjs.com/package/extra-set.min
-
 [:vhs:]: https://asciinema.org/a/339194
 [:package:]: https://www.npmjs.com/package/extra-set
 [:moon:]: https://www.npmjs.com/package/extra-set.min
