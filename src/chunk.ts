@@ -1,5 +1,3 @@
-import filterAt from './filterAt';
-
 /**
  * Breaks set into chunks of given size.
  * @param x a set
