@@ -1,4 +1,4 @@
-A [set] is a collection of unique values. 
+A [set] is a collection of unique values. [:running:] [:vhs:] [:package:] [:moon:] [:ledger:]
 
 ```javascript
 const set = require('extra-set');
@@ -28,20 +28,20 @@ set.symmetricDifference([1, 2, 3], [2, 3, 4]);
 | [map]                  | Updates values based on map function.
 | [reduce]               | Reduces values to a single value.
 | [filter]               | Keeps values which pass a test.
-| [filter$]              | Keeps values which satisfy a test.
-| [find]                 | Finds values passing the test.
+| [filter$]              | Keeps values which pass a test.
+| [find]                 | Finds a value passing the test.
 | [pop]                  | Removes a value from a set.
 | [pop$]                 | Removes a value from a set.
 |                        |
 | [isSubset]             | Checks if set has a subset.
 | [isSuperset]           | Checks if set is contained in all lists.
 | [isDisjoint]           | Checks if sets have no common values.
-| [subsets]              | Lists all subsets of a set.
+| [subsets]              | Lists all possible subsets.
 |                        |
 | [union]                | Gives values present in any set.
-| [union$]               | Gives a set with values from all lists.
+| [union$]               | Gives values present in any set.
 | [intersection]         | Gives values present in both sets.
-| [intersection$]        | Gives a set with values in all lists.
+| [intersection$]        | Gives values present in both sets.
 | [difference]           | Gives values of set not present in another.
 | [difference$]          | Gives values of set not present in another.
 | [symmetricDifference]  | Gives values not present in both sets.
@@ -81,3 +81,4 @@ set.symmetricDifference([1, 2, 3], [2, 3, 4]);
 [:package:]: https://www.npmjs.com/package/extra-set
 [:moon:]: https://www.npmjs.com/package/extra-set.min
 [:ledger:]: https://unpkg.com/extra-set/
+[:running:]: https://npm.runkit.com/extra-set

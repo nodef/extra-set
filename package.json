@@ -1,6 +1,6 @@
 {
   "name": "extra-set",
-  "version": "2.1.46",
+  "version": "2.1.47",
   "description": "A set is a collection of unique values.",
   "main": "index.js",
   "exports": {
@@ -70,8 +70,7 @@
     "take",
     "union",
     "value",
-    "values",
-    "zip"
+    "values"
   ],
   "repository": {
     "type": "git",
