@@ -1,3 +1,4 @@
+import search from './search';
 import type {testFn} from './_types';
 
 /**
@@ -6,8 +7,7 @@ import type {testFn} from './_types';
  * @param fn test function (v, v, x)
  * @param ths this argument
  */
-function search<T>(x: Iterable<T>, fn: testFn<T>, ths: object=null): T {
-  for(var v of x)
-    if(fn.call(ths, v, v, x)) return v;
+function scanUntil<T>(x: Iterable<T>, fn: testFn<T>, ths: object=null): T {
+  return search(x, fn, ths);
 }
-export default search;
+export default scanUntil;
