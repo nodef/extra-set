@@ -1,5 +1,5 @@
 /**
- * Gets a value.
+ * Gets first value.
  * @param x a set
  */
 function head<T>(x: Iterable<T>): T {

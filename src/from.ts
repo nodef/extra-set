@@ -3,6 +3,6 @@
  * @param vs values
  */
 function from<T>(vs: Iterable<T>): Set<T> {
-  return new Set<T>(vs);
+  return new Set(vs);
 };
 export default from;

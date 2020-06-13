@@ -14,6 +14,6 @@ function flatTo(x: Iterable<any>, dep: number, a: Set<any>): Set<any> {
  * @param dep maximum depth (-1)
  */
 function flat(x: Iterable<any>, dep: number=-1): Set<any> {
-  return flatTo(x, dep, new Set<any>());
+  return flatTo(x, dep, new Set());
 }
 export default flat;
