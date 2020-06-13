@@ -93,7 +93,9 @@ var x = new Set([1, 2, 3]);
 [![nodef](https://merferry.glitch.me/card/extra-map.svg)](https://nodef.github.io)
 
 [set]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
-[:vhs:]: https://asciinema.org/a/339194
+[browserify]: https://www.npmjs.com/package/browserify
+[rollup]: https://www.npmjs.com/package/rollup
+[uglify-js]: https://www.npmjs.com/package/uglify-js
 [:package:]: https://www.npmjs.com/package/extra-set
 [:moon:]: https://www.npmjs.com/package/extra-set.min
 [:ledger:]: https://unpkg.com/extra-set/
@@ -131,6 +133,4 @@ var x = new Set([1, 2, 3]);
 [compare]: https://github.com/nodef/extra-set/wiki/compare
 [find]: https://github.com/nodef/extra-set/wiki/find
 [scanWhile]: https://github.com/nodef/extra-set/wiki/scanWhile
-[rollup]: https://github.com/nodef/extra-set/wiki/rollup
-[browserify]: https://github.com/nodef/extra-set/wiki/browserify
-[uglify-js]: https://github.com/nodef/extra-set/wiki/uglify-js
+[:vhs:]: https://asciinema.org/a/339298
