@@ -1,19 +1,15 @@
+import filterAt from './filterAt';
+
 /**
  * Breaks set into chunks of given size.
  * @param x a set
  * @param n chunk size (1)
+ * @param s chunk step (n)
  */
-function chunk<T>(x: Iterable<T>, n: number=1): Set<T>[] {
-  var a = [], m = n;
-  var b = new Set<T>();
-  for(var v of x) {
-    b.add(v);
-    if(--m>0) continue;
-    a.push(b);
-    b = new Set<T>();
-    m = n;
-  }
-  if(b.size) a.push(b);
+function chunk<T>(x: Set<T>, n: number=1, s: number=n): Set<T>[] {
+  var vs = [...x], a = [];
+  for(var i=0, I=vs.length; i<I; i+=s)
+    a.push(new Set(vs.slice(i, i+n)));
   return a;
 }
 export default chunk;

@@ -1,4 +1,3 @@
-import iterableCount from '@extra-iterable/count';
 import type {testFn} from './_types';
 
 /**
@@ -8,6 +7,9 @@ import type {testFn} from './_types';
  * @param ths this argument
  */
 function count<T>(x: Iterable<T>, fn: testFn<T>, ths: object=null): number {
-  return iterableCount(x, v => fn.call(ths, v, v, x));
+  var a = 0;
+  for(var v of x)
+    if(fn.call(ths, v, v, x)) a++;
+  return a;
 }
 export default count;

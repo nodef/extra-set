@@ -1,4 +1,4 @@
-import iterableCountAs from '@extra-iterable/count-as';
+import id from './_id';
 import type {mapFn} from './_types';
 
 /**
@@ -8,7 +8,14 @@ import type {mapFn} from './_types';
  * @param ths this argument
  * @returns Map {value => count}
  */
-function countOn<T, U>(x: Iterable<T>, fn: mapFn<T, U>=null, ths: object=null): Map<T|U, number> {
-  return iterableCountAs(x, v => fn.call(ths, v, v, x));
+function countAs<T, U=T>(x: Iterable<T>, fn: mapFn<T, T|U>, ths: object=null): Map<T|U, number> {
+  var fn = fn||id;
+  var a = new Map();
+  for(var v of x) {
+    var v1 = fn.call(ths, v, v, x);
+    var n = a.get(v1)||0;
+    a.set(v1, n+1);
+  }
+  return a;
 }
-export default countOn;
+export default countAs;
