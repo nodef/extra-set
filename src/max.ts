@@ -1,12 +1,13 @@
-import iterableMax from '@extra-iterable/max';
-import type {compareFn} from './_types';
+import range from './range';
+import type {compareFn, mapFn} from './_types';
 
 /**
- * Finds largest value.
+ * Finds largest entry.
  * @param x a set
- * @param fn compare function (a, b)
+ * @param fc compare function (a, b)
+ * @param fm map function (v, v, x)
  */
-function max<T>(x: Iterable<T>, fn: compareFn<T>=null): T {
-  return iterableMax(x, fn);
+function max<T, U=T>(x: Iterable<T>, fc: compareFn<T|U>=null, fm: mapFn<T, T|U>=null): [T, T] {
+  return range(x, fc, fm)[1];
 }
 export default max;

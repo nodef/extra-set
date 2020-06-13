@@ -1,7 +1,6 @@
 /**
  * Lists all values.
- * @param x a map
- * @returns ...values
+ * @param x a set
  */
 function* keys<T>(x: Iterable<T>): IterableIterator<T> {
   for(var v of x)

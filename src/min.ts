@@ -1,12 +1,13 @@
-import iterableMin from '@extra-iterable/min';
-import type {compareFn} from './_types';
+import range from './range';
+import type {compareFn, mapFn} from './_types';
 
 /**
- * Finds smallest value.
+ * Finds smallest entry.
  * @param x a set
- * @param fn compare function (a, b)
+ * @param fc compare function (a, b)
+ * @param fm map function (v, v, x)
  */
-function min<T>(x: Iterable<T>, fn: compareFn<T>=null): T {
-  return iterableMin(x, fn);
+function min<T, U=T>(x: Iterable<T>, fc: compareFn<T|U>=null, fm: mapFn<T, T|U>=null): [T, T] {
+  return range(x, fc, fm)[0];
 }
 export default min;

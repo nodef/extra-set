@@ -1,3 +1,4 @@
+import concat$ from './concat$';
 import type {mapFn} from './_types';
 
 /**
@@ -7,11 +8,11 @@ import type {mapFn} from './_types';
  * @param ths this argument
  * @returns x
  */
-function map$<T, U>(x: Set<T>, fn: mapFn<T, U>, ths: object=null): Set<T> {
-  for(var v of x) {
-    x.delete(v);
-    x.add(fn.call(ths, v, v, x));
-  }
-  return x;
+function map$<T>(x: Set<T>, fn: mapFn<T, T>, ths: object=null): Set<T> {
+  var vs = [];
+  for(var v of x)
+    vs.push(fn.call(ths, v, v, x));
+  x.clear();
+  return concat$(x, vs);
 }
 export default map$;

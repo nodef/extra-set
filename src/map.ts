@@ -6,7 +6,7 @@ import type {mapFn} from './_types';
  * @param fn map function (v, v, x)
  * @param ths this argument
  */
-function map<T, U>(x: Iterable<T>, fn: mapFn<T, U>, ths: object=null): Set<T> {
+function map<T, U=T>(x: Iterable<T>, fn: mapFn<T, T|U>, ths: object=null): Set<T> {
   var a = new Set<T>();
   for(var v of x)
     a.add(fn.call(ths, v, v, x));
