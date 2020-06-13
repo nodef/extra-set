@@ -1,11 +1,11 @@
+import {value as arrayValue} from 'extra-array';
+
 /**
  * Picks an arbitrary value.
- * @param x a set
+ * @param x an object
  * @param r random seed 0->1
  */
-function value<T>(x: Set<T>, r: number=Math.random()): T {
-  var i = Math.floor(r * x.size), j = -1;
-  for(var v of x)
-    if(++j===i) return v;
+function value(x: object, r: number=Math.random()): any {
+  return arrayValue(Object.values(x), r);
 }
 export default value;
