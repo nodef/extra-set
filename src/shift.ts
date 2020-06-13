@@ -1,12 +1,10 @@
-import shift$ from './shift$';
+import drop from './drop';
 
 /**
  * Removes first value.
  * @param x a set
- * @returns [value, set]
  */
-function shift<T>(x: Iterable<T>): [T, Set<T>] {
-  var x1 = new Set<T>(x);
-  return [shift$(x1), x1];
+function shift<T>(x: Iterable<T>): Set<T> {
+  return drop(x, 1);
 }
 export default shift;

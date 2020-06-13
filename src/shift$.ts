@@ -1,12 +1,11 @@
+import drop$ from './drop$';
+
 /**
  * Removes first value.
  * @param x a set (updated)
- * @returns value
+ * @returns x
  */
-function shift$<T>(x: Set<T>): T {
-  for(var v of x) {
-    x.delete(v);
-    return v;
-  }
+function shift$<T>(x: Set<T>): Set<T> {
+  return drop$(x, 1);
 }
 export default shift$;
