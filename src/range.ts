@@ -9,7 +9,7 @@ import type {compareFn, mapFn} from './_types';
  * @param fm map function (v, v, x)
  * @returns [smallest, largest]
  */
-function range<T, U>(x: Iterable<T>, fc: compareFn<T|U>=null, fm: mapFn<T, T|U>=null): [[T, T], [T, T]] {
+function range<T, U=T>(x: Iterable<T>, fc: compareFn<T|U>=null, fm: mapFn<T, T|U>=null): [[T, T], [T, T]] {
   var fc = fc||cmp, fm = fm||id;
   var mu: T, mv: T|U;
   var nu: T, nv: T|U;

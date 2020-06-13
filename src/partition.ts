@@ -1,7 +1,7 @@
 import type {testFn} from './_types';
 
 /**
- * Segregates set keeping similar values together.
+ * Segregates values by test result.
  * @param x a set
  * @param fn test function (v, v, x)
  * @param ths this argument

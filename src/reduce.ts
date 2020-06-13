@@ -6,7 +6,7 @@ import type {reduceFn} from './_types';
  * @param fn reduce function (acc, v, v, x)
  * @param acc initial value
  */
-function reduce<T, U>(x: Iterable<T>, fn: reduceFn<T, T|U>, acc?: T|U): T|U {
+function reduce<T, U=T>(x: Iterable<T>, fn: reduceFn<T, T|U>, acc?: T|U): T|U {
   var init = arguments.length <= 2;
   for(var v of x) {
     if(init) { acc = v; init = false; }
