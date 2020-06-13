@@ -1,6 +1,6 @@
 {
   "name": "extra-set",
-  "version": "2.1.44",
+  "version": "2.1.45",
   "description": "A set is a collection of unique values.",
   "main": "index.js",
   "exports": {
