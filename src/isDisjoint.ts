@@ -1,15 +1,11 @@
 /**
- * Checks if sets no have value in common.
- * @param xs sets
+ * Checks if sets have no common values.
+ * @param x a set
+ * @param y another set
  */
-function isDisjoint<T>(...xs: Iterable<T>[]): boolean {
-  var a = new Set<T>();
-  for(var x of xs) {
-    for(var v of x) {
-      if(a.has(v)) return false;
-      a.add(v);
-    }
-  }
+function isDisjoint<T>(x: Set<T>, y: Set<T>): boolean {
+  for(var v of x)
+    if(y.has(v)) return false;
   return true;
 }
 export default isDisjoint;

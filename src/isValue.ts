@@ -1,13 +1,9 @@
-import search from './search';
-import type {compareFn} from './_types';
-
 /**
- * Checks if map has a value.
- * @param x a map
+ * Checks if set has a value.
+ * @param x a set
  * @param v value?
- * @param fn compare function (a, b)
  */
-function isValue<T>(x: Iterable<T>, v: T, fn: compareFn<T>=null): boolean {
-  return search(x, v, fn)!==undefined;
+function isValue<T>(x: Set<T>, v: T): boolean {
+  return x.has(v);
 }
 export default isValue;
