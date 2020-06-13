@@ -6,7 +6,7 @@ import type {testFn} from './_types';
  * @param fn test function (v, v, x)
  * @param ths this argument
  */
-function find<T>(x: Set<T>, fn: testFn<T>, ths: object=null): T {
+function find<T>(x: Iterable<T>, fn: testFn<T>, ths: object=null): T {
   for(var v of x)
     if(fn.call(ths, v, v, x)) return v;
 }
