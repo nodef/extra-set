@@ -1,7 +1,19 @@
 A [set] is a collection of unique values. [:running:] [:vhs:] [:package:] [:moon:] [:ledger:]
 
+Methods as separate packages:
+- `@extra-set/concat`: use [rollup] to bundle this es module.
+- `@extra-set/concat.min`: use in browser ([browserify], [uglify-js]).
+
+Methods look like:
+- `concat()`: doesn't modify the map itself (pure).
+- `concat$()`: modifies the map itself (update).
+
+> Stability: Experimental.
+
 ```javascript
 const set = require('extra-set');
+// import * as set from 'extra-set';
+// import * as set from 'https://unpkg.com/extra-set@2.1.50/index.mjs'; (deno)
 
 var x = new Set([1, 2, 3, 4, 5]);
 var y = new Set([2, 4]);
@@ -36,45 +48,45 @@ var x = new Set([1, 2, 3]);
 
 | Method                | Action
 |-----------------------|-------
-| [is]                  | Checks if value is map.
-| [add]                 | Sets value at key.
-| [remove]              | Deletes an entry.
-| [size]                | Gets size of map.
+| [is]                  | Checks if value is set.
+| [add]                 | Adds value to set.
+| [remove]              | Deletes a value.
+| [size]                | Gets size of set.
 |                       | 
-| [head]                | Gets first entry.
-| [take]                | Keeps first n entries only.
-| [shift]               | Removes first entry.
-| [from]                | Creates object from entries.
+| [head]                | Gets first value.
+| [take]                | Keeps first n values only.
+| [shift]               | Removes first value.
+| [from]                | Creates a set from values.
 |                       | 
-| [concat]              | Combines entries from maps, preferring last.
-| [flat]                | Flattens nested map to given depth.
-| [chunk]               | Breaks map into chunks of given size.
-| [filterAt]            | Gets map with given keys.
+| [concat]              | Combines values from sets.
+| [flat]                | Flattens nested set to given depth.
+| [chunk]               | Breaks set into chunks of given size.
+| [filterAt]            | Gets set with given values.
 |                       | 
 | [map]                 | Updates values based on map function.
-| [filter]              | Keeps entries which pass a test.
+| [filter]              | Keeps values which pass a test.
 | [reduce]              | Reduces values to a single value.
 | [range]               | Finds smallest and largest entries.
 | [count]               | Counts values which satisfy a test.
 | [partition]           | Segregates values by test result.
-| [cartesianProduct]    | Lists cartesian product of maps.
+| [cartesianProduct]    | Lists cartesian product of sets.
 | [some]                | Checks if any value satisfies a test.
 |                       | 
-| [union]               | Gives entries present in any map.
-| [intersection]        | Gives entries present in both maps.
-| [difference]          | Gives entries of map not present in another.
-| [symmetricDifference] | Gives entries not present in both maps.
-| [isDisjoint]          | Checks if maps have no common keys.
+| [union]               | Gives values present in any set.
+| [intersection]        | Gives values present in both sets.
+| [difference]          | Gives values of set not present in another.
+| [symmetricDifference] | Gives values not present in both sets.
+| [isDisjoint]          | Checks if sets have no common values.
 |                       | 
 | [value]               | Picks an arbitrary value.
 | [entry]               | Picks an arbitrary entry.
-| [subset]              | Picks an arbitrary subobject.
+| [subset]              | Picks an arbitrary subset.
 |                       | 
-| [isEmpty]             | Checks if map is empty.
-| [isEqual]             | Checks if two maps are equal.
-| [compare]             | Compares two maps.
-| [find]                | Finds value of an entry passing a test.
-| [scanWhile]           | Finds key of first entry not passing a test.
+| [isEmpty]             | Checks if set is empty.
+| [isEqual]             | Checks if two sets are equal.
+| [compare]             | Compares two sets.
+| [find]                | Finds a value passing the test.
+| [scanWhile]           | Finds first value not passing a test.
 
 <br>
 
@@ -86,3 +98,39 @@ var x = new Set([1, 2, 3]);
 [:moon:]: https://www.npmjs.com/package/extra-set.min
 [:ledger:]: https://unpkg.com/extra-set/
 [:running:]: https://npm.runkit.com/extra-set
+[is]: https://github.com/nodef/extra-set/wiki/is
+[add]: https://github.com/nodef/extra-set/wiki/add
+[remove]: https://github.com/nodef/extra-set/wiki/remove
+[size]: https://github.com/nodef/extra-set/wiki/size
+[head]: https://github.com/nodef/extra-set/wiki/head
+[take]: https://github.com/nodef/extra-set/wiki/take
+[shift]: https://github.com/nodef/extra-set/wiki/shift
+[from]: https://github.com/nodef/extra-set/wiki/from
+[concat]: https://github.com/nodef/extra-set/wiki/concat
+[flat]: https://github.com/nodef/extra-set/wiki/flat
+[chunk]: https://github.com/nodef/extra-set/wiki/chunk
+[filterAt]: https://github.com/nodef/extra-set/wiki/filterAt
+[map]: https://github.com/nodef/extra-set/wiki/map
+[filter]: https://github.com/nodef/extra-set/wiki/filter
+[reduce]: https://github.com/nodef/extra-set/wiki/reduce
+[range]: https://github.com/nodef/extra-set/wiki/range
+[count]: https://github.com/nodef/extra-set/wiki/count
+[partition]: https://github.com/nodef/extra-set/wiki/partition
+[cartesianProduct]: https://github.com/nodef/extra-set/wiki/cartesianProduct
+[some]: https://github.com/nodef/extra-set/wiki/some
+[union]: https://github.com/nodef/extra-set/wiki/union
+[intersection]: https://github.com/nodef/extra-set/wiki/intersection
+[difference]: https://github.com/nodef/extra-set/wiki/difference
+[symmetricDifference]: https://github.com/nodef/extra-set/wiki/symmetricDifference
+[isDisjoint]: https://github.com/nodef/extra-set/wiki/isDisjoint
+[value]: https://github.com/nodef/extra-set/wiki/value
+[entry]: https://github.com/nodef/extra-set/wiki/entry
+[subset]: https://github.com/nodef/extra-set/wiki/subset
+[isEmpty]: https://github.com/nodef/extra-set/wiki/isEmpty
+[isEqual]: https://github.com/nodef/extra-set/wiki/isEqual
+[compare]: https://github.com/nodef/extra-set/wiki/compare
+[find]: https://github.com/nodef/extra-set/wiki/find
+[scanWhile]: https://github.com/nodef/extra-set/wiki/scanWhile
+[rollup]: https://github.com/nodef/extra-set/wiki/rollup
+[browserify]: https://github.com/nodef/extra-set/wiki/browserify
+[uglify-js]: https://github.com/nodef/extra-set/wiki/uglify-js
