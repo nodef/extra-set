@@ -4,12 +4,11 @@ import type {testFn} from './_types';
  * Keeps values which pass a test.
  * @param x a set (updated)
  * @param fn test function (v, v, x)
- * @param ths this argument
  * @returns x
  */
-function filter$<T>(x: Set<T>, fn: testFn<T>, ths: object=null): Set<T> {
+function filter$<T>(x: Set<T>, fn: testFn<T>): Set<T> {
   for(var v of x)
-    if(!fn.call(ths, v, v, x)) x.delete(v);
+    if(!fn(v, v, x)) x.delete(v);
   return x;
 }
 export default filter$;

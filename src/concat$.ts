@@ -1,5 +1,5 @@
 /**
- * Combines values from sets.
+ * Appends values from sets.
  * @param x a set (updated)
  * @param ys other sets
  * @returns x

@@ -1,7 +1,7 @@
 import concat$ from './concat$';
 
 /**
- * Combines values from sets.
+ * Appends values from sets.
  * @param xs sets
  */
 function concat<T>(...xs: Iterable<T>[]): Set<T> {

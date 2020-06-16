@@ -57,7 +57,7 @@ export {default as size} from './size';
 export {default as some} from './some';
 export {default as subset} from './subset';
 export {default as subsets} from './subsets';
-export {default as symmetricDifference} from './symmetricDifference';
+export {default as symmetricDifference} from './symmetricDifference$';
 export {default as tail} from './tail';
 export {default as take$} from './take$';
 export {default as take} from './take';

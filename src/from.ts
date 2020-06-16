@@ -1,6 +1,6 @@
 /**
- * Creates a set from values.
- * @param vs values
+ * Creates a set from iterable.
+ * @param vs iterable
  */
 function from<T>(vs: Iterable<T>): Set<T> {
   return new Set(vs);
