@@ -56,9 +56,9 @@ var x = new Set([1, 2, 3]);
 | [head]                | Gets first value.
 | [take]                | Keeps first n values only.
 | [shift]               | Removes first value.
-| [from]                | Creates a set from values.
+| [from]                | Creates a set from iterable.
 |                       | 
-| [concat]              | Combines values from sets.
+| [concat]              | Appends values from sets.
 | [flat]                | Flattens nested set to given depth.
 | [chunk]               | Breaks set into chunks of given size.
 | [filterAt]            | Gets set with given values.
@@ -74,7 +74,7 @@ var x = new Set([1, 2, 3]);
 |                       | 
 | [union]               | Gives values present in any set.
 | [intersection]        | Gives values present in both sets.
-| [difference]          | Gives values of set not present in another.
+| [difference]          | Gives values of set not present in others.
 | [symmetricDifference] | Gives values not present in both sets.
 | [isDisjoint]          | Checks if sets have no common values.
 |                       | 
@@ -85,7 +85,7 @@ var x = new Set([1, 2, 3]);
 | [isEmpty]             | Checks if set is empty.
 | [isEqual]             | Checks if two sets are equal.
 | [compare]             | Compares two sets.
-| [find]                | Finds a value passing the test.
+| [find]                | Finds a value passing s test.
 | [scanWhile]           | Finds first value not passing a test.
 
 <br>

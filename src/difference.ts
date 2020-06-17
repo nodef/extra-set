@@ -1,5 +1,7 @@
+import difference$ from './difference$';
+
 /**
- * Gives values of set not present in another.
+ * Gives values of set not present in others.
  * @param x a set
  * @param y another set
  */

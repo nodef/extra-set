@@ -8,9 +8,5 @@ import {chunk as arrayChunk} from 'extra-array';
  */
 function chunk<T>(x: Set<T>, n: number=1, s: number=n): Set<T>[] {
   return arrayChunk([...x], n ,s).map(c => new Set(c));
-  var vs = [...x], a = [];
-  for(var i=0, I=vs.length; i<I; i+=s)
-    a.push(new Set(vs.slice(i, i+n)));
-  return a;
 }
 export default chunk;

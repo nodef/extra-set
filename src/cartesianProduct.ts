@@ -4,7 +4,7 @@ import type {mapFn} from './_types';
 /**
  * Lists cartesian product of sets.
  * @param xs sets
- * @param fn map function (v)
+ * @param fn map function (vs, vs)
  */
 function* cartesianProduct<T, U=Set<T>>(xs: Set<T>[], fn: mapFn<Set<T>, Set<T>|U>=null): IterableIterator<Set<T>|U> {
   var fn = fn||id;
@@ -19,7 +19,7 @@ function* cartesianProduct<T, U=Set<T>>(xs: Set<T>[], fn: mapFn<Set<T>, Set<T>|U
       var vs = vss[n], v = vs[i];
       a.add(v);
     }
-    yield fn(a, null, null);
+    yield fn(a, a, null);
     for(var r=XS-1; r>=0; r--) {
       is[r]++;
       if(is[r]<ls[r]) break;
