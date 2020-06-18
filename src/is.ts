@@ -2,7 +2,7 @@
  * Checks if value is set.
  * @param v value
  */
-function is(v: any): v is Set<unknown> {
+function is<T>(v: any): v is Set<T> {
   return v instanceof Set;
 }
 export default is;

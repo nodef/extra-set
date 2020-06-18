@@ -4,7 +4,7 @@
  * @param y another set
  * @returns x
  */
-function difference$<T>(x: Set<T>, y: Set<T>): Set<T> {
+function difference$<T>(x: Set<T>, y: Iterable<T>): Set<T> {
   for(var v of y)
     x.delete(v);
   return x;

@@ -15,7 +15,7 @@ function* cartesianProduct<T, U=Set<T>>(xs: Set<T>[], fn: mapFn<Set<T>, Set<T>|U
   while(true) {
     var a = new Set<T>();
     for(var n=0; n<XS; n++) {
-      var i  = is[n],  x = xs[n];
+      var i  = is[n];
       var vs = vss[n], v = vs[i];
       a.add(v);
     }
