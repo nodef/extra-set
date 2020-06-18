@@ -4,7 +4,7 @@
  * @param y another set
  * @returns x
  */
-function symmetricDifference$<T>(x: Set<T>, y: Set<T>): Set<T> {
+function symmetricDifference$<T>(x: Set<T>, y: Iterable<T>): Set<T> {
   for(var v of y) {
     if(x.has(v)) x.delete(v);
     else x.add(v);
