@@ -5,10 +5,10 @@ import type {testFn} from './_types';
 /**
  * Checks if any value satisfies a test.
  * @param x a set
- * @param fn test function (v, v, x)
+ * @param ft test function (v, v, x)
  */
-function some<T>(x: Iterable<T>, fn: testFn<T>=null): boolean {
-  var fn = fn||id as testFn<T>;
-  return scanUntil(x, fn)!==undefined;
+function some<T>(x: Iterable<T>, ft: testFn<T>=null): boolean {
+  var ft = ft||id as testFn<T>;
+  return scanUntil(x, ft)!==undefined;
 }
 export default some;

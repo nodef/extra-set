@@ -4,9 +4,9 @@ import type {testFn} from './_types';
 /**
  * Finds first value passing a test.
  * @param x a set
- * @param fn test function (v, v, x)
+ * @param ft test function (v, v, x)
  */
-function scanUntil<T>(x: Iterable<T>, fn: testFn<T>): T {
-  return find(x, fn);
+function scanUntil<T>(x: Iterable<T>, ft: testFn<T>): T {
+  return find(x, ft);
 }
 export default scanUntil;
