@@ -3,7 +3,7 @@
  * @param x a set
  * @param v value?
  */
-function isValue<T>(x: Set<T>, v: T): boolean {
+function has<T>(x: Set<T>, v: T): boolean {
   return x.has(v);
 }
-export default isValue;
+export default has;
