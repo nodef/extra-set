@@ -56,7 +56,7 @@ var x = new Set([1, 2, 3]);
 | [head]                | Gets first value.
 | [take]                | Keeps first n values only.
 | [shift]               | Removes first value.
-| [from]                | Creates a set from iterable.
+| [from]                | Creates a set from values.
 |                       | 
 | [concat]              | Appends values from sets.
 | [flat]                | Flattens nested set to given depth.
