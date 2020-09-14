@@ -1,6 +1,6 @@
 {
   "name": "extra-set",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "A set is a collection of unique values.",
   "main": "index.js",
   "module": "index.mjs",
@@ -86,8 +86,8 @@
   "author": "wolfram77@gmail.com",
   "license": "MIT",
   "devDependencies": {
-    "extra-array": "^2.10.6",
-    "extra-build": "^1.1.13",
-    "extra-iterable": "^2.5.3"
+    "extra-array": "^2.10.8",
+    "extra-build": "^1.1.27",
+    "extra-iterable": "^2.5.13"
   }
 }
