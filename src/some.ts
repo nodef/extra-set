@@ -1,6 +1,6 @@
-import id from './_id';
-import scanUntil from './scanUntil';
-import type {testFn} from './_types';
+import id from "./_id";
+import scanUntil from "./scanUntil";
+import type {testFn} from "./_types";
 
 /**
  * Checks if any value satisfies a test.

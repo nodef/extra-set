@@ -1,4 +1,4 @@
-import rejectAt$ from './rejectAt$';
+import rejectAt$ from "./rejectAt$";
 
 /**
  * Gets set without given values.

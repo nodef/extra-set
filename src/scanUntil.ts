@@ -1,5 +1,5 @@
-import find from './find';
-import type {testFn} from './_types';
+import find from "./find";
+import type {testFn} from "./_types";
 
 /**
  * Finds first value passing a test.

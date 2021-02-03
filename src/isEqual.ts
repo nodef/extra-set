@@ -1,4 +1,4 @@
-import compare from './compare';
+import compare from "./compare";
 
 /**
  * Checks if two sets are equal.

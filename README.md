@@ -21,9 +21,9 @@ Methods look like:
 <br>
 
 ```javascript
-const set = require('extra-set');
-// import * as set from 'extra-set';
-// import * as set from 'https://unpkg.com/extra-set@2.1.60/index.mjs'; (deno)
+const set = require("extra-set");
+// import * as set from "extra-set";
+// import * as set from "https://unpkg.com/extra-set@2.1.60/index.mjs"; (deno)
 
 var x = new Set([1, 2, 3, 4, 5]);
 var y = new Set([2, 4]);

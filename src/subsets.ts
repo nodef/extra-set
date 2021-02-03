@@ -1,4 +1,4 @@
-import {subsequences} from 'extra-array';
+import {subsequences} from "extra-array";
 
 /**
  * Lists all possible subsets.

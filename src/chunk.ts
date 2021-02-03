@@ -1,4 +1,4 @@
-import {chunk as arrayChunk} from 'extra-array';
+import {chunk as arrayChunk} from "extra-array";
 
 /**
  * Breaks set into chunks of given size.

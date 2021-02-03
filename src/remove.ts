@@ -1,4 +1,4 @@
-import remove$ from './remove$';
+import remove$ from "./remove$";
 
 /**
  * Deletes a value.

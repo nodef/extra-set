@@ -1,5 +1,5 @@
-import {from$} from 'extra-array';
-import type {arrayMapFn} from './_types';
+import {from$} from "extra-array";
+import type {arrayMapFn} from "./_types";
 
 /**
  * Creates a set from values.

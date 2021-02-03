@@ -1,5 +1,5 @@
-import concat$ from './concat$';
-import type {mapFn} from './_types';
+import concat$ from "./concat$";
+import type {mapFn} from "./_types";
 
 /**
  * Updates values based on map function.

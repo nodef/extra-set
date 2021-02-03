@@ -1,5 +1,5 @@
-import findAll from './findAll';
-import type {testFn} from './_types';
+import findAll from "./findAll";
+import type {testFn} from "./_types";
 
 /**
  * Finds values passing a test.

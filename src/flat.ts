@@ -1,6 +1,6 @@
-import id from './_id';
-import is from './is';
-import type {mapFn, testFn} from './_types';
+import id from "./_id";
+import is from "./is";
+import type {mapFn, testFn} from "./_types";
 
 function flatTo<T=any>(x: Iterable<T>, n: number, fm: mapFn<T, any>, ft: testFn<T>, a: Set<any>): Set<any> {
   for(var v of x) {

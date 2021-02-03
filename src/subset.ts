@@ -1,4 +1,4 @@
-import {subsequence} from 'extra-array';
+import {subsequence} from "extra-array";
 
 /**
  * Picks an arbitrary subset.
