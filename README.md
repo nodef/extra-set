@@ -1,4 +1,12 @@
-A [set] is a collection of unique values. [:running:] [:vhs:] [:package:] [:moon:] [:ledger:]
+A [set] is a collection of unique values.<br>
+:package: [NPM](https://www.npmjs.com/package/extra-set),
+:smiley_cat: [GitHub](https://github.com/orgs/nodef/packages?repo_name=extra-set),
+:running: [RunKit](https://npm.runkit.com/extra-set),
+:vhs: [Asciinema](https://asciinema.org/a/339298),
+:moon: [Minified](https://www.npmjs.com/package/extra-set.min),
+:scroll: [Files](https://unpkg.com/extra-set/),
+:newspaper: [JSDoc](https://nodef.github.io/extra-set/),
+:blue_book: [Wiki](https://github.com/nodef/extra-set/wiki/).
 
 Methods as separate packages:
 - `@extra-set/concat`: use [rollup] to bundle this es module.
@@ -103,10 +111,6 @@ var x = new Set([1, 2, 3]);
 [browserify]: https://www.npmjs.com/package/browserify
 [rollup]: https://www.npmjs.com/package/rollup
 [uglify-js]: https://www.npmjs.com/package/uglify-js
-[:package:]: https://www.npmjs.com/package/extra-set
-[:moon:]: https://www.npmjs.com/package/extra-set.min
-[:ledger:]: https://unpkg.com/extra-set/
-[:running:]: https://npm.runkit.com/extra-set
 [is]: https://github.com/nodef/extra-set/wiki/is
 [add]: https://github.com/nodef/extra-set/wiki/add
 [remove]: https://github.com/nodef/extra-set/wiki/remove
@@ -140,4 +144,3 @@ var x = new Set([1, 2, 3]);
 [compare]: https://github.com/nodef/extra-set/wiki/compare
 [find]: https://github.com/nodef/extra-set/wiki/find
 [scanWhile]: https://github.com/nodef/extra-set/wiki/scanWhile
-[:vhs:]: https://asciinema.org/a/339298
