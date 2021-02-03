@@ -10,6 +10,8 @@ Methods look like:
 
 > Stability: Experimental.
 
+<br>
+
 ```javascript
 const set = require('extra-set');
 // import * as set from 'extra-set';
@@ -44,53 +46,58 @@ var x = new Set([1, 2, 3]);
 // ]
 ```
 
-### reference
-
-| Method                | Action
-|-----------------------|-------
-| [is]                  | Checks if value is set.
-| [add]                 | Adds value to set.
-| [remove]              | Deletes a value.
-| [size]                | Gets size of set.
-|                       | 
-| [head]                | Gets first value.
-| [take]                | Keeps first n values only.
-| [shift]               | Removes first value.
-| [from]                | Creates a set from values.
-|                       | 
-| [concat]              | Appends values from sets.
-| [flat]                | Flattens nested set to given depth.
-| [chunk]               | Breaks set into chunks of given size.
-| [filterAt]            | Gets set with given values.
-|                       | 
-| [map]                 | Updates values based on map function.
-| [filter]              | Keeps values which pass a test.
-| [reduce]              | Reduces values to a single value.
-| [range]               | Finds smallest and largest entries.
-| [count]               | Counts values which satisfy a test.
-| [partition]           | Segregates values by test result.
-| [cartesianProduct]    | Lists cartesian product of sets.
-| [some]                | Checks if any value satisfies a test.
-|                       | 
-| [union]               | Gives values present in any set.
-| [intersection]        | Gives values present in both sets.
-| [difference]          | Gives values of set not present in others.
-| [symmetricDifference] | Gives values not present in both sets.
-| [isDisjoint]          | Checks if sets have no common values.
-|                       | 
-| [value]               | Picks an arbitrary value.
-| [entry]               | Picks an arbitrary entry.
-| [subset]              | Picks an arbitrary subset.
-|                       | 
-| [isEmpty]             | Checks if set is empty.
-| [isEqual]             | Checks if two sets are equal.
-| [compare]             | Compares two sets.
-| [find]                | Finds a value passing s test.
-| [scanWhile]           | Finds first value not passing a test.
-
+<br>
 <br>
 
-[![nodef](https://merferry.glitch.me/card/extra-set.svg)](https://nodef.github.io)
+
+## Index
+
+| Method                | Action                                     |
+| --------------------- | ------------------------------------------ |
+| [is]                  | Checks if value is set.                    |
+| [add]                 | Adds value to set.                         |
+| [remove]              | Deletes a value.                           |
+| [size]                | Gets size of set.                          |
+|                       |
+| [head]                | Gets first value.                          |
+| [take]                | Keeps first n values only.                 |
+| [shift]               | Removes first value.                       |
+| [from]                | Creates a set from values.                 |
+|                       |
+| [concat]              | Appends values from sets.                  |
+| [flat]                | Flattens nested set to given depth.        |
+| [chunk]               | Breaks set into chunks of given size.      |
+| [filterAt]            | Gets set with given values.                |
+|                       |
+| [map]                 | Updates values based on map function.      |
+| [filter]              | Keeps values which pass a test.            |
+| [reduce]              | Reduces values to a single value.          |
+| [range]               | Finds smallest and largest entries.        |
+| [count]               | Counts values which satisfy a test.        |
+| [partition]           | Segregates values by test result.          |
+| [cartesianProduct]    | Lists cartesian product of sets.           |
+| [some]                | Checks if any value satisfies a test.      |
+|                       |
+| [union]               | Gives values present in any set.           |
+| [intersection]        | Gives values present in both sets.         |
+| [difference]          | Gives values of set not present in others. |
+| [symmetricDifference] | Gives values not present in both sets.     |
+| [isDisjoint]          | Checks if sets have no common values.      |
+|                       |
+| [value]               | Picks an arbitrary value.                  |
+| [entry]               | Picks an arbitrary entry.                  |
+| [subset]              | Picks an arbitrary subset.                 |
+|                       |
+| [isEmpty]             | Checks if set is empty.                    |
+| [isEqual]             | Checks if two sets are equal.              |
+| [compare]             | Compares two sets.                         |
+| [find]                | Finds a value passing s test.              |
+| [scanWhile]           | Finds first value not passing a test.      |
+
+<br>
+<br>
+
+[![](https://img.youtube.com/vi/mvO6zaIUO18/maxresdefault.jpg)](https://www.youtube.com/watch?v=mvO6zaIUO18)
 
 [set]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
 [browserify]: https://www.npmjs.com/package/browserify
