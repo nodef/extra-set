@@ -8,13 +8,13 @@ A [set] is a collection of unique values.<br>
 :newspaper: [JSDoc](https://nodef.github.io/extra-set/),
 :blue_book: [Wiki](https://github.com/nodef/extra-set/wiki/).
 
-Methods as separate packages:
-- `@extra-set/concat`: use [rollup] to bundle this es module.
-- `@extra-set/concat.min`: use in browser ([browserify], [uglify-js]).
-
 Methods look like:
 - `concat()`: doesn't modify the map itself (pure).
 - `concat$()`: modifies the map itself (update).
+
+Methods as separate packages:
+- `@extra-set/concat`: use [rollup] to bundle this es module.
+- `@extra-set/concat.min`: use in browser ([browserify], [uglify-js]).
 
 > Stability: Experimental.
 
