@@ -1,6 +1,6 @@
 {
   "name": "extra-set",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A set is a collection of unique values.",
   "main": "index.js",
   "module": "index.mjs",
@@ -10,7 +10,7 @@
     "import": "./index.mjs"
   },
   "scripts": {
-    "test": "exit",
+    "test": "jest",
     "build": "node ./build",
     "publish-docs": "node ./build publish-docs",
     "publish-packages": "node ./build publish-packages"
