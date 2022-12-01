@@ -1,24 +1,26 @@
 {
   "name": "extra-set",
-  "version": "2.2.14",
+  "version": "3.0.0",
   "description": "A set is a collection of unique values.",
-  "private": true,
   "main": "index.js",
   "module": "index.mjs",
+  "sideEffects": false,
   "exports": {
     "require": "./index.js",
     "import": "./index.mjs"
   },
   "scripts": {
     "test": "exit",
-    "build": "ebuild export+main+example+wiki+readme --wikiExample=false --asciinema=false",
-    "deploy": "ebuild jsdoc+export+main+meta+example+github+publish"
+    "build": "node ./build",
+    "publish-docs": "node ./build publish-docs",
+    "publish-packages": "node ./build publish-packages"
   },
-  "runkitExampleFilename": "example.js",
   "keywords": [
     "extra",
     "set"
   ],
+  "author": "wolfram77@gmail.com",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nodef/extra-set.git"
@@ -27,12 +29,17 @@
     "url": "https://github.com/nodef/extra-set/issues"
   },
   "homepage": "https://github.com/nodef/extra-set#readme",
-  "author": "wolfram77@gmail.com",
-  "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^23.0.3",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@types/jest": "^29.2.3",
     "extra-array": "^3.1.5",
     "extra-build": "^2.2.39",
     "extra-function": "^1.1.15",
-    "extra-iterable": "^3.2.5"
+    "extra-iterable": "^3.2.5",
+    "jest": "^29.3.1",
+    "rollup-plugin-cleanup": "^3.2.1",
+    "rollup-plugin-dts": "^5.0.0",
+    "ts-jest": "^29.0.3"
   }
 }
