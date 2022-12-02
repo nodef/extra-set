@@ -21,7 +21,7 @@ Methods as separate packages:
 <br>
 
 ```javascript
-const set = require("extra-set");
+const set = require('extra-set');
 // import * as set from "extra-set";
 // import * as set from "https://unpkg.com/extra-set@2.1.60/index.mjs"; (deno)
 
