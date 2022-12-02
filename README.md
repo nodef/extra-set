@@ -149,6 +149,7 @@ var x = new Set([1, 2, 3]);
 
 [![](https://img.youtube.com/vi/mvO6zaIUO18/maxresdefault.jpg)](https://www.youtube.com/watch?v=mvO6zaIUO18)
 [![ORG](https://img.shields.io/badge/org-nodef-green?logo=Org)](https://nodef.github.io)
+[![DOI](https://zenodo.org/badge/133403268.svg)](https://zenodo.org/badge/latestdoi/133403268)
 [![Coverage Status](https://coveralls.io/repos/github/nodef/extra-set/badge.svg?branch=master)](https://coveralls.io/github/nodef/extra-set?branch=master)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f0511916d4a805c040f6/test_coverage)](https://codeclimate.com/github/nodef/extra-set/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f0511916d4a805c040f6/maintainability)](https://codeclimate.com/github/nodef/extra-set/maintainability)
