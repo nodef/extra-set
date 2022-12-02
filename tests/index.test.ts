@@ -150,8 +150,8 @@ test("isEqual", () => {
 
 
 
-// LENGTH
-// ------
+// SIZE
+// ----
 
 test("size", () => {
   var x = new Set([1, 2, 3]);

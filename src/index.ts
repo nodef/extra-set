@@ -192,8 +192,8 @@ export function isEqual<T>(x: Set<T>, y: Set<T>): boolean {
 
 
 
-// LENGTH
-// ------
+// SIZE
+// ----
 
 /**
  * Find the size of a set.
