@@ -851,7 +851,7 @@ export function isDisjoint<T>(x: Set<T>, y: Iterable<T>): boolean {
 
 
 /**
- * Give values present in any set.
+ * Obtain values present in any set.
  * @param x a set
  * @param y another set
  * @returns x ∪ y = \{v | v ∈ x or v ∈ y\}
@@ -862,7 +862,7 @@ export function union<T>(x: Iterable<T>, y: Iterable<T>): Set<T> {
 
 
 /**
- * Give values present in any set.
+ * Obtain values present in any set.
  * @param x a set (updated)
  * @param y another set
  * @returns x = x ∪ y = \{v | v ∈ x or v ∈ y\}
@@ -873,7 +873,7 @@ export function union$<T>(x: Set<T>, y: Iterable<T>): Set<T> {
 
 
 /**
- * Give values present in both sets.
+ * Obtain values present in both sets.
  * @param x a set
  * @param y another set
  * @returns x ∩ y = \{v | v ∈ x, v ∈ y\}
@@ -887,7 +887,7 @@ export function intersection<T>(x: Set<T>, y: Iterable<T>): Set<T> {
 
 
 /**
- * Give values present in both sets.
+ * Obtain values present in both sets.
  * @param x a set (updated)
  * @param y another set
  * @returns x = x ∩ y = \{v | v ∈ x, v ∈ y\}
@@ -900,7 +900,7 @@ export function intersection$<T>(x: Set<T>, y: Set<T>): Set<T> {
 
 
 /**
- * Give values not present in another set.
+ * Obtain values not present in another set.
  * @param x a set
  * @param y another set
  * @returns x - y = \{v | v ∈ x, v ∉ y\}
@@ -914,7 +914,7 @@ export function difference<T>(x: Set<T>, y: Set<T>): Set<T> {
 
 
 /**
- * Give values not present in another set.
+ * Obtain values not present in another set.
  * @param x a set (updated)
  * @param y another set
  * @returns x = x - y = \{v | v ∈ x, v ∉ y\}
@@ -927,7 +927,7 @@ export function difference$<T>(x: Set<T>, y: Iterable<T>): Set<T> {
 
 
 /**
- * Give values not present in both sets.
+ * Obtain values not present in both sets.
  * @param x a set
  * @param y another set
  * @returns x-y ∪ y-x
@@ -943,7 +943,7 @@ export function symmetricDifference<T>(x: Set<T>, y: Set<T>): Set<T> {
 
 
 /**
- * Give values not present in both sets.
+ * Obtain values not present in both sets.
  * @param x a set (updated)
  * @param y another set
  * @returns x = x-y ∪ y-x

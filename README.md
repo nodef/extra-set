@@ -133,14 +133,14 @@ var x = new Set([1, 2, 3]);
 | [join] | Join values together into a string. |
 |  |  |
 | [isDisjoint] | Check if sets have no value in common. |
-| [union] | Give values present in any set. |
-| [union$] | Give values present in any set. |
-| [intersection] | Give values present in both sets. |
-| [intersection$] | Give values present in both sets. |
-| [difference] | Give values not present in another set. |
-| [difference$] | Give values not present in another set. |
-| [symmetricDifference] | Give values not present in both sets. |
-| [symmetricDifference$] | Give values not present in both sets. |
+| [union] | Obtain values present in any set. |
+| [union$] | Obtain values present in any set. |
+| [intersection] | Obtain values present in both sets. |
+| [intersection$] | Obtain values present in both sets. |
+| [difference] | Obtain values not present in another set. |
+| [difference$] | Obtain values not present in another set. |
+| [symmetricDifference] | Obtain values not present in both sets. |
+| [symmetricDifference$] | Obtain values not present in both sets. |
 | [cartesianProduct] | List cartesian product of sets. |
 
 <br>
