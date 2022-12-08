@@ -140,9 +140,9 @@ export function entries<T>(x: Set<T>): IterableIterator<[T, T]> {
  * @param fm map function (v, i, x)
  * @returns x as set
  */
-export function from<T, U=T>(x: Iterable<T>, fm: IterableMapFunction<T, T|U> | null=null): Set<T|U> {
+export function from<T, U=T>(x: Iterable<T>, fm: IterableMapFunction<T, U> | null=null): Set<T|U> {
   if (!fm) return new Set(x);
-  var a = new Set<T|U>(), i = -1;
+  var a = new Set<U>(), i = -1;
   for (var v of x)
     a.add(fm(v, ++i, x));
   return a;
@@ -724,7 +724,7 @@ function flatTo$<T=any>(a: Set<any>, x: Set<T>, n: number, fm: MapFunction<T, an
  * @param x a nested set
  * @param fm map function (v, v, x)
  * @param ft flatten test function (v, v, x) [is]
- * @returns flat iterable
+ * @returns flat set
  */
 export function flatMap<T=any>(x: Set<T>, fm: MapFunction<T, any> | null=null, ft: TestFunction<T> | null=null): Set<any> {
   var fm = fm || IDENTITY;
