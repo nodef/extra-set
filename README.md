@@ -153,6 +153,7 @@ var x = new Set([1, 2, 3]);
 [![Coverage Status](https://coveralls.io/repos/github/nodef/extra-set/badge.svg?branch=master)](https://coveralls.io/github/nodef/extra-set?branch=master)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f0511916d4a805c040f6/test_coverage)](https://codeclimate.com/github/nodef/extra-set/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f0511916d4a805c040f6/maintainability)](https://codeclimate.com/github/nodef/extra-set/maintainability)
+![](https://ga-beacon.deno.dev/G-RC63DPBH3P:SH3Eq-NoQ9mwgYeHWxu7cw/github.com/nodef/extra-set)
 
 
 [is]: https://github.com/nodef/extra-set/wiki/is
