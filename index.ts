@@ -1,16 +1,16 @@
 import {
   IDENTITY,
   COMPARE,
-} from "extra-function";
+} from "@nodef/extra-function";
 import {
   chunk             as arrayChunk,
   subsequences      as arraySubsequences,
   randomValue       as arrayRandomValue,
   randomSubsequence as arrayRandomSubsequence,
-} from "extra-array";
-import {
+} from "@nodef/extra-array";
+import type {
   MapFunction as IterableMapFunction,
-} from "extra-iterable";
+} from "@nodef/extra-iterable";
 
 
 
@@ -68,7 +68,7 @@ export type TestFunction<T> = (v: T, k: T, x: Set<T>) => boolean;
  * @param x set containing the value
  * @returns transformed value
  */
-export type MapFunction<T, U> = (v: T, k: T, x: Set<T>) => U;
+export type MapFunction<T, U> = (v: T, k: T, x: Set<T> | null) => U;
 
 
 /**
@@ -103,7 +103,7 @@ export type EndFunction = (dones: boolean[]) => boolean;
  * @param v a value
  * @returns v is a set?
  */
-export function is(v: any): v is Set<any> {
+export function is(v: unknown): v is Set<unknown> {
   return v instanceof Set;
 }
 
@@ -142,8 +142,8 @@ export function entries<T>(x: Set<T>): IterableIterator<[T, T]> {
  */
 export function from<T, U=T>(x: Iterable<T>, fm: IterableMapFunction<T, U> | null=null): Set<T|U> {
   if (!fm) return new Set(x);
-  var a = new Set<U>(), i = -1;
-  for (var v of x)
+  const a = new Set<U>(); let i = -1;
+  for (const v of x)
     a.add(fm(v, ++i, x));
   return a;
 }
@@ -171,9 +171,9 @@ export function from$<T>(x: Iterable<T>): Set<T> {
  * @returns x=y: 0, otherwise: -ve/+ve
  */
 export function compare<T>(x: Set<T>, y: Set<T>): number {
-  for (var v of x)
+  for (const v of x)
     if (!y.has(v)) return 1;
-  for (var v of y)
+  for (const v of y)
     if (!x.has(v)) return -1;
   return 0;
 }
@@ -278,8 +278,8 @@ export function remove$<T>(x: Set<T>, v: T): Set<T> {
  * @returns Σtᵢ | tᵢ = 1 if ft(vᵢ) else 0; vᵢ ∈ x
  */
 export function count<T>(x: Set<T>, ft: TestFunction<T>): number {
-  var a = 0;
-  for (var v of x)
+  let a = 0;
+  for (const v of x)
     if (ft(v, v, x)) ++a;
   return a;
 }
@@ -292,11 +292,11 @@ export function count<T>(x: Set<T>, ft: TestFunction<T>): number {
  * @returns Map \{value ⇒ count\}
  */
 export function countAs<T, U=T>(x: Set<T>, fm: MapFunction<T, T|U>): Map<T|U, number> {
-  var fm = fm || IDENTITY;
-  var a  = new Map();
-  for (var v of x) {
-    var w = fm(v, v, x);
-    var n = a.get(w) || 0;
+  fm = fm || IDENTITY;
+  const a  = new Map();
+  for (const v of x) {
+    const w = fm(v, v, x);
+    const n = a.get(w) || 0;
     a.set(w, n+1);
   }
   return a;
@@ -310,7 +310,7 @@ export function countAs<T, U=T>(x: Set<T>, fm: MapFunction<T, T|U>): Map<T|U, nu
  * @param fm map function (v, v, x)
  * @returns v | v ≤ vᵢ; vᵢ ∈ x
  */
-export function min<T, U=T>(x: Set<T>, fc: CompareFunction<T|U> | null=null, fm: MapFunction<T, T|U> | null=null): T {
+export function min<T, U=T>(x: Set<T>, fc: CompareFunction<T|U> | null=null, fm: MapFunction<T, T|U> | null=null): T | undefined {
   return range(x, fc, fm)[0];
 }
 
@@ -322,7 +322,7 @@ export function min<T, U=T>(x: Set<T>, fc: CompareFunction<T|U> | null=null, fm:
  * @param fm map function (v, v, x)
  * @returns v | v ≥ vᵢ; vᵢ ∈ x
  */
-export function max<T, U=T>(x: Set<T>, fc: CompareFunction<T|U> | null=null, fm: MapFunction<T, T|U> | null=null): T {
+export function max<T, U=T>(x: Set<T>, fc: CompareFunction<T|U> | null=null, fm: MapFunction<T, T|U> | null=null): T | undefined {
   return range(x, fc, fm)[1];
 }
 
@@ -334,16 +334,16 @@ export function max<T, U=T>(x: Set<T>, fc: CompareFunction<T|U> | null=null, fm:
  * @param fm map function (v, v, x)
  * @returns [min_value, max_value]
  */
-export function range<T, U=T>(x: Set<T>, fc: CompareFunction<T|U> | null=null, fm: MapFunction<T, T|U> | null=null): [T, T] {
-  var fc = fc || COMPARE;
-  var fm = fm || IDENTITY;
-  var mu: T, mv: T|U;
-  var nu: T, nv: T|U;
-  var i = 0;
-  for (var u of x) {
-    var v = fm(u, u, x);
-    if(i===0 || fc(v, mv)<0) { mu = u; mv = v; }
-    if(i===0 || fc(v, nv)>0) { nu = u; nv = v; }
+export function range<T, U=T>(x: Set<T>, fc: CompareFunction<T|U> | null=null, fm: MapFunction<T, T|U> | null=null): [T | undefined, T | undefined] {
+  fc = fc || COMPARE;
+  fm = fm || IDENTITY;
+  let mu: T | undefined, mv: T|U | undefined;
+  let nu: T | undefined, nv: T|U | undefined;
+  let i = 0;
+  for (const u of x) {
+    const v = fm(u, u, x);
+    if(i===0 || fc(v, mv as T|U)<0) { mu = u; mv = v; }
+    if(i===0 || fc(v, nv as T|U)>0) { nu = u; nv = v; }
     i++;
   }
   return [mu, nu];
@@ -362,7 +362,7 @@ export function range<T, U=T>(x: Set<T>, fc: CompareFunction<T|U> | null=null, f
  * @returns v₀ if x ≠ Φ else vd | v₀ ∈ x
  */
 export function head<T>(x: Set<T>, vd?: T): T | undefined {
-  for (var v of x)
+  for (const v of x)
     return v;
   return vd;
 }
@@ -385,8 +385,8 @@ export function tail<T>(x: Set<T>): Set<T> {
  * @returns \{v₀, v₁, ...\} | vᵢ ∈ x and |\{v₀, v₁, ...\}| ≤ n
  */
 export function take<T>(x: Iterable<T>, n: number=1): Set<T> {
-  var a = new Set<T>(), i = -1;
-  for (var v of x) {
+  const a = new Set<T>(); let i = -1;
+  for (const v of x) {
     if (++i>=n) break;
     a.add(v);
   }
@@ -401,8 +401,8 @@ export function take<T>(x: Iterable<T>, n: number=1): Set<T> {
  * @returns x = \{v₀, v₁, ...\} | vᵢ ∈ x and |\{v₀, v₁, ...\}| ≤ n
  */
 export function take$<T>(x: Set<T>, n: number=1): Set<T> {
-  var i = -1;
-  for (var v of x)
+  let i = -1;
+  for (const v of x)
     if (++i>=n) x.delete(v);
   return x;
 }
@@ -415,8 +415,8 @@ export function take$<T>(x: Set<T>, n: number=1): Set<T> {
  * @returns \{vₙ, vₙ₊₁, ...\} | vᵢ ∈ x and |\{vₙ, vₙ₊₁, ...\}| ≤ max(|x| - n, 0)
  */
 export function drop<T>(x: Set<T>, n: number=1): Set<T> {
-  var a = new Set<T>(), i = -1;
-  for (var v of x)
+  const a = new Set<T>(); let i = -1;
+  for (const v of x)
     if (++i>=n) a.add(v);
   return a;
 }
@@ -429,8 +429,8 @@ export function drop<T>(x: Set<T>, n: number=1): Set<T> {
  * @returns x = \{vₙ, vₙ₊₁, ...\} | vᵢ ∈ x and |\{vₙ, vₙ₊₁, ...\}| ≤ max(|x| - n, 0)
  */
 export function drop$<T>(x: Set<T>, n: number=1): Set<T> {
-  var i = -1;
-  for (var v of x) {
+  let i = -1;
+  for (const v of x) {
     if (++i>=n) break;
     x.delete(v);
   }
@@ -450,7 +450,7 @@ export function drop$<T>(x: Set<T>, n: number=1): Set<T> {
  * @returns elements selected by bit from 0..2^|x| if n<0; only of length n otherwise
  */
 export function* subsets<T>(x: Set<T>, n: number=-1): IterableIterator<Set<T>> {
-  for (var vs of arraySubsequences([...x], n))
+  for (const vs of arraySubsequences([...x], n))
     yield new Set(vs);
 }
 
@@ -489,7 +489,7 @@ export {randomEntry as entry};
  * @returns \{vᵢ, vⱼ, ...\} | vᵢ, vⱼ, ... ∈ x; |\{vᵢ, vⱼ, ...\}| = |x| if n<0 else n
  */
 export function randomSubset<T>(x: Set<T>, n: number=-1, fr: ReadFunction<number>=Math.random): Set<T> {
-  var vs = arrayRandomSubsequence([...x], n, fr);
+  const vs = arrayRandomSubsequence([...x], n, fr);
   return new Set(vs);
 }
 
@@ -501,7 +501,7 @@ export function randomSubset<T>(x: Set<T>, n: number=-1, fr: ReadFunction<number
  * @returns y ⊆ x?
  */
 export function hasSubset<T>(x: Set<T>, y: Set<T>): boolean {
-  for (var v of y)
+  for (const v of y)
     if (!x.has(v)) return false;
   return true;
 }
@@ -529,8 +529,8 @@ export function has<T>(x: Set<T>, v: T): boolean {
  * @param ft test function (v, v, x)
  * @returns first v | ft(v) = true; v ∈ x
  */
-export function find<T>(x: Set<T>, ft: TestFunction<T>): T {
-  for (var v of x)
+export function find<T>(x: Set<T>, ft: TestFunction<T>): T | undefined {
+  for (const v of x)
     if (ft(v, v, x)) return v;
 }
 export {find as search};
@@ -543,8 +543,8 @@ export {find as search};
  * @returns [v₀, v₁, ...] | ft(vᵢ) = true; vᵢ ∈ x
  */
 export function findAll<T>(x: Set<T>, ft: TestFunction<T>): T[] {
-  var a = [];
-  for (var v of x)
+  const a = [];
+  for (const v of x)
     if (ft(v, v, x)) a.push(v);
   return a;
 }
@@ -562,7 +562,7 @@ export {findAll as searchAll};
  * @param fp process function (v, v, x)
  */
 export function forEach<T>(x: Set<T>, fp: ProcessFunction<T>): void {
-  for (var v of x)
+  for (const v of x)
     fp(v, v, x);
 }
 
@@ -574,8 +574,8 @@ export function forEach<T>(x: Set<T>, fp: ProcessFunction<T>): void {
  * @returns true if ft(vᵢ) = true for some vᵢ ∈ x
  */
 export function some<T>(x: Set<T>, ft: TestFunction<T> | null=null): boolean {
-  var ft = ft || IDENTITY as TestFunction<T>;
-  for (var v of x)
+  ft = ft || IDENTITY as TestFunction<T>;
+  for (const v of x)
     if (ft(v, v, x)) return true;
   return false;
 }
@@ -588,8 +588,8 @@ export function some<T>(x: Set<T>, ft: TestFunction<T> | null=null): boolean {
  * @returns true if ft(vᵢ) = true for all vᵢ ∈ x
  */
 export function every<T>(x: Set<T>, ft: TestFunction<T> | null=null): boolean {
-  var ft = ft || IDENTITY as TestFunction<T>;
-  for (var v of x)
+  ft = ft || IDENTITY as TestFunction<T>;
+  for (const v of x)
     if (!ft(v, v, x)) return false;
   return true;
 }
@@ -602,8 +602,8 @@ export function every<T>(x: Set<T>, ft: TestFunction<T> | null=null): boolean {
  * @returns \{fm(v₀), fm(v₁), ...\} | vᵢ ∈ x
  */
 export function map<T, U=T>(x: Set<T>, fm: MapFunction<T, T|U>): Set<T|U> {
-  var a = new Set<T|U>();
-  for (var v of x)
+  const a = new Set<T|U>();
+  for (const v of x)
     a.add(fm(v, v, x));
   return a;
 }
@@ -616,8 +616,8 @@ export function map<T, U=T>(x: Set<T>, fm: MapFunction<T, T|U>): Set<T|U> {
  * @returns x = \{fm(v₀), fm(v₁), ...\} | vᵢ ∈ x
  */
 export function map$<T>(x: Set<T>, fm: MapFunction<T, T>): Set<T> {
-  var vs: T[] = [];
-  for (var v of x)
+  const vs: T[] = [];
+  for (const v of x)
     vs.push(fm(v, v, x));
   x.clear();
   return concat$(x, vs);
@@ -632,12 +632,12 @@ export function map$<T>(x: Set<T>, fm: MapFunction<T, T>): Set<T> {
  * @returns fr(fr(acc, v₀), v₁)... | fr(acc, v₀) = v₀ if acc not given
  */
 export function reduce<T, U=T>(x: Set<T>, fr: ReduceFunction<T, T|U>, acc?: T|U): T|U {
-  var init = arguments.length <= 2;
-  for (var v of x) {
+  let init = arguments.length <= 2;
+  for (const v of x) {
     if (init) { acc = v; init = false; }
-    else acc = fr(acc, v, v, x);
+    else acc = fr(acc as T|U, v, v, x);
   }
-  return acc;
+  return acc as T|U;
 }
 
 
@@ -648,8 +648,8 @@ export function reduce<T, U=T>(x: Set<T>, fr: ReduceFunction<T, T|U>, acc?: T|U)
  * @returns \{v₀, v₁, ...\} | ft(vᵢ) = true; vᵢ ∈ x
  */
 export function filter<T>(x: Set<T>, ft: TestFunction<T>): Set<T> {
-  var a = new Set<T>();
-  for (var v of x)
+  const a = new Set<T>();
+  for (const v of x)
     if (ft(v, v, x)) a.add(v);
   return a;
 }
@@ -662,7 +662,7 @@ export function filter<T>(x: Set<T>, ft: TestFunction<T>): Set<T> {
  * @returns x = \{v₀, v₁, ...\} | ft(vᵢ) = true; vᵢ ∈ x
  */
 export function filter$<T>(x: Set<T>, ft: TestFunction<T>): Set<T> {
-  for (var v of x)
+  for (const v of x)
     if (!ft(v, v, x)) x.delete(v);
   return x;
 }
@@ -675,8 +675,8 @@ export function filter$<T>(x: Set<T>, ft: TestFunction<T>): Set<T> {
  * @returns \{v₀, v₁, ...\} | ft(vᵢ) = false; vᵢ ∈ x
  */
 export function reject<T>(x: Set<T>, ft: TestFunction<T>): Set<T> {
-  var a = new Set<T>();
-  for (var v of x)
+  const a = new Set<T>();
+  for (const v of x)
     if (!ft(v, v, x)) a.add(v);
   return a;
 }
@@ -689,7 +689,7 @@ export function reject<T>(x: Set<T>, ft: TestFunction<T>): Set<T> {
  * @returns x = \{v₀, v₁, ...\} | ft(vᵢ) = false; vᵢ ∈ x
  */
 export function reject$<T>(x: Set<T>, ft: TestFunction<T>): Set<T> {
-  for (var v of x)
+  for (const v of x)
     if (ft(v, v, x)) x.delete(v);
   return x;
 }
@@ -703,16 +703,16 @@ export function reject$<T>(x: Set<T>, ft: TestFunction<T>): Set<T> {
  * @param ft flatten test function (v, v, x) [is]
  * @returns flat set
  */
-export function flat<T=any>(x: Set<T>, n: number=-1, fm: MapFunction<T, any> | null=null, ft: TestFunction<T> | null=null): Set<any> {
-  var fm = fm || IDENTITY;
-  var ft = ft || is;
+export function flat<T=unknown>(x: Set<T>, n: number=-1, fm: MapFunction<T, unknown> | null=null, ft: TestFunction<T> | null=null): Set<unknown> {
+  fm = fm || IDENTITY;
+  ft = ft || is;
   return flatTo$(new Set(), x, n, fm, ft);
 }
 
-function flatTo$<T=any>(a: Set<any>, x: Set<T>, n: number, fm: MapFunction<T, any>, ft: TestFunction<T>): Set<any> {
-  for (var v of x) {
-    var v1 = fm(v, v, x);
-    if (n!==0 && ft(v1, v1, x)) flatTo$(a, v1, n-1, fm, ft);
+function flatTo$<T=unknown>(a: Set<unknown>, x: Set<T>, n: number, fm: MapFunction<T, unknown>, ft: TestFunction<T>): Set<unknown> {
+  for (const v of x) {
+    const v1 = fm(v, v, x);
+    if (n!==0 && ft(v1 as T, v1 as T, x)) flatTo$(a, v1 as Set<T>, n-1, fm, ft);
     else a.add(v1);
   }
   return a;
@@ -726,13 +726,13 @@ function flatTo$<T=any>(a: Set<any>, x: Set<T>, n: number, fm: MapFunction<T, an
  * @param ft flatten test function (v, v, x) [is]
  * @returns flat set
  */
-export function flatMap<T=any>(x: Set<T>, fm: MapFunction<T, any> | null=null, ft: TestFunction<T> | null=null): Set<any> {
-  var fm = fm || IDENTITY;
-  var ft = ft || is;
-  var a  = new Set();
-  for (var v of x) {
-    var w = fm(v, v, x);
-    if (ft(w, w, x)) concat$(a, w);
+export function flatMap<T=unknown>(x: Set<T>, fm: MapFunction<T, unknown> | null=null, ft: TestFunction<T> | null=null): Set<unknown> {
+  fm = fm || IDENTITY;
+  ft = ft || is;
+  const a  = new Set();
+  for (const v of x) {
+    const w = fm(v, v, x);
+    if (ft(w as T, w as T, x)) concat$(a, w as Set<unknown>);
     else a.add(w);
   }
   return a;
@@ -751,9 +751,9 @@ export function flatMap<T=any>(x: Set<T>, fm: MapFunction<T, any> | null=null, f
  * @returns [satisfies, doesnt]
  */
 export function partition<T>(x: Set<T>, ft: TestFunction<T>): [Set<T>, Set<T>] {
-  var t = new Set<T>();
-  var f = new Set<T>();
-  for (var v of x) {
+  const t = new Set<T>();
+  const f = new Set<T>();
+  for (const v of x) {
     if (ft(v, v, x)) t.add(v);
     else f.add(v);
   }
@@ -768,10 +768,10 @@ export function partition<T>(x: Set<T>, ft: TestFunction<T>): [Set<T>, Set<T>] {
  * @returns Map \{key ⇒ values\}
  */
 export function partitionAs<T, U=T>(x: Set<T>, fm: MapFunction<T, T|U>): Map<T|U, Set<T>> {
-  var fm = fm || IDENTITY;
-  var a  = new Map();
-  for (var v of x) {
-    var v1 = fm(v, v, x);
+  fm = fm || IDENTITY;
+  const a = new Map();
+  for (const v of x) {
+    const v1 = fm(v, v, x);
     if (!a.has(v1)) a.set(v1, new Set());
     a.get(v1).add(v);
   }
@@ -813,8 +813,8 @@ export function concat<T>(...xs: Set<T>[]): Set<T> {
  * @returns x = x ∪ y₀ ∪ y₁ ∪ ... | [y₀, y₁, ...] = ys
  */
 export function concat$<T>(x: Set<T>, ...ys: Iterable<T>[]): Set<T> {
-  for (var y of ys) {
-    for (var v of y)
+  for (const y of ys) {
+    for (const v of y)
       x.add(v);
   }
   return x;
@@ -844,7 +844,7 @@ export function join<T>(x: Set<T>, sep: string=","): string {
  * @returns x ∩ y = Φ?
  */
 export function isDisjoint<T>(x: Set<T>, y: Iterable<T>): boolean {
-  for (var v of y)
+  for (const v of y)
     if (x.has(v)) return false;
   return true;
 }
@@ -879,8 +879,8 @@ export function union$<T>(x: Set<T>, y: Iterable<T>): Set<T> {
  * @returns x ∩ y = \{v | v ∈ x, v ∈ y\}
  */
 export function intersection<T>(x: Set<T>, y: Iterable<T>): Set<T> {
-  var a = new Set<T>();
-  for (var v of y)
+  const a = new Set<T>();
+  for (const v of y)
     if (x.has(v)) a.add(v);
   return a;
 }
@@ -893,7 +893,7 @@ export function intersection<T>(x: Set<T>, y: Iterable<T>): Set<T> {
  * @returns x = x ∩ y = \{v | v ∈ x, v ∈ y\}
  */
 export function intersection$<T>(x: Set<T>, y: Set<T>): Set<T> {
-  for (var v of x)
+  for (const v of x)
     if (!y.has(v)) x.delete(v);
   return x;
 }
@@ -906,8 +906,8 @@ export function intersection$<T>(x: Set<T>, y: Set<T>): Set<T> {
  * @returns x - y = \{v | v ∈ x, v ∉ y\}
  */
 export function difference<T>(x: Set<T>, y: Set<T>): Set<T> {
-  var a = new Set<T>();
-  for (var v of x)
+  const a = new Set<T>();
+  for (const v of x)
     if (!y.has(v)) a.add(v);
   return a;
 }
@@ -920,7 +920,7 @@ export function difference<T>(x: Set<T>, y: Set<T>): Set<T> {
  * @returns x = x - y = \{v | v ∈ x, v ∉ y\}
  */
 export function difference$<T>(x: Set<T>, y: Iterable<T>): Set<T> {
-  for (var v of y)
+  for (const v of y)
     x.delete(v);
   return x;
 }
@@ -933,10 +933,10 @@ export function difference$<T>(x: Set<T>, y: Iterable<T>): Set<T> {
  * @returns x-y ∪ y-x
  */
 export function symmetricDifference<T>(x: Set<T>, y: Set<T>): Set<T> {
-  var a = new Set<T>();
-  for (var v of x)
+  const a = new Set<T>();
+  for (const v of x)
     if (!y.has(v)) a.add(v);
-  for (var v of y)
+  for (const v of y)
     if (!x.has(v)) a.add(v);
   return a;
 }
@@ -949,7 +949,7 @@ export function symmetricDifference<T>(x: Set<T>, y: Set<T>): Set<T> {
  * @returns x = x-y ∪ y-x
  */
 export function symmetricDifference$<T>(x: Set<T>, y: Iterable<T>): Set<T> {
-  for (var v of y) {
+  for (const v of y) {
     if (x.has(v)) x.delete(v);
     else x.add(v);
   }
@@ -964,20 +964,21 @@ export function symmetricDifference$<T>(x: Set<T>, y: Iterable<T>): Set<T> {
  * @returns x₀ × x₁ × ... = \{\{v₀, v₁, ...\} | v₀ ∈ x₀, v₁ ∈ x₁, ...]\}
  */
 export function* cartesianProduct<T, U=Set<T>>(xs: Set<T>[], fm: MapFunction<Set<T>, Set<T>|U> | null=null): IterableIterator<Set<T>|U> {
-  var fm = fm || IDENTITY;
-  var XS = xs.length;
-  var ys = xs.map(x => [...x]);
-  var ls = ys.map(vs => vs.length);
-  var is = ys.map(vs => 0);
+  fm = fm || IDENTITY;
+  const XS = xs.length;
+  const ys = xs.map(x => [...x]);
+  const ls = ys.map(vs => vs.length);
+  const is = ys.map(_vs => 0);
   while (true) {
-    var a = new Set<T>();
-    for (var n=0; n<XS; ++n) {
-      var i  = is[n];
-      var vs = ys[n], v = vs[i];
+    const a = new Set<T>();
+    for (let n=0; n<XS; ++n) {
+      const i  = is[n];
+      const vs = ys[n], v = vs[i];
       a.add(v);
     }
     yield fm(a, a, null);
-    for (var r=XS-1; r>=0; --r) {
+    let r = XS-1;
+    for (; r>=0; --r) {
       if (++is[r] < ls[r]) break;
       is[r] = 0;
     }

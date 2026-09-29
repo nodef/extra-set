@@ -1,9 +1,9 @@
 A pack of functions for working with Sets.<br>
-📦 [Node.js](https://www.npmjs.com/package/extra-set),
-🌐 [Web](https://www.npmjs.com/package/extra-set.web),
-📜 [Files](https://unpkg.com/extra-set/),
-📰 [Docs](https://nodef.github.io/extra-set/),
-📘 [Wiki](https://github.com/nodef/extra-set/wiki/).
+
+▌
+📦 [JSR](https://jsr.io/@nodef/extra-set),
+📦 [NPM](https://www.npmjs.com/package/extra-set),
+📰 [Docs](https://jsr.io/@nodef/extra-set/doc).
 
 A [Set] is a collection of unique values. This package includes common set
 functions related to querying **about** sets, **generating** them, **comparing**
@@ -17,39 +17,30 @@ All functions except `from*()` take set as 1st parameter. Methods like
 `concat()` are pure and do not modify the set itself, while methods like
 `concat$()` *do modify (update)* the set itself.
 
-This package is available in *Node.js* and *Web* formats. The web format
-is exposed as `extra_set` standalone variable and can be loaded from
-[jsDelivr CDN].
-
-> Stability: [Experimental](https://www.youtube.com/watch?v=L1j93RnIxEo).
-
 [Set]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
-[jsDelivr CDN]: https://cdn.jsdelivr.net/npm/extra-set.web/index.js
 
 <br>
 
 ```javascript
-const set = require('extra-set');
-// import * as set from "extra-set";
-// import * as set from "https://unpkg.com/extra-set/index.mjs"; (Deno)
+import * as xset from "jsr:@nodef/extra-set";
 
 var x = new Set([1, 2, 3, 4, 5]);
 var y = new Set([2, 4]);
-set.difference(x, y);
+xset.difference(x, y);
 // → Set(3) { 1, 3, 5 }
 
 var x = new Set([1, 2, 3]);
 var y = new Set([3, 4]);
-set.isDisjoint(x, y);
+xset.isDisjoint(x, y);
 // → false
 
 var x = new Set([1, 2, 3, 4]);
 var y = new Set([3, 4, 5, 6]);
-set.symmetricDifference(x, y);
+xset.symmetricDifference(x, y);
 // → Set(4) { 1, 2, 5, 6 }
 
 var x = new Set([1, 2, 3]);
-[...set.subsets(x)];
+[...xset.subsets(x)];
 // → [
 // →   Set(0) {},
 // →   Set(1) { 1 },
@@ -147,72 +138,68 @@ var x = new Set([1, 2, 3]);
 <br>
 
 
-[![](https://img.youtube.com/vi/mvO6zaIUO18/maxresdefault.jpg)](https://www.youtube.com/watch?v=mvO6zaIUO18)
+[![](https://raw.githubusercontent.com/qb40/designs/gh-pages/0/image/11.png)](https://wolfram77.github.io)<br>
 [![ORG](https://img.shields.io/badge/org-nodef-green?logo=Org)](https://nodef.github.io)
-[![DOI](https://zenodo.org/badge/133403268.svg)](https://zenodo.org/badge/latestdoi/133403268)
-[![Coverage Status](https://coveralls.io/repos/github/nodef/extra-set/badge.svg?branch=master)](https://coveralls.io/github/nodef/extra-set?branch=master)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/f0511916d4a805c040f6/test_coverage)](https://codeclimate.com/github/nodef/extra-set/test_coverage)
-[![Maintainability](https://api.codeclimate.com/v1/badges/f0511916d4a805c040f6/maintainability)](https://codeclimate.com/github/nodef/extra-set/maintainability)
 ![](https://ga-beacon.deno.dev/G-RC63DPBH3P:SH3Eq-NoQ9mwgYeHWxu7cw/github.com/nodef/extra-set)
 
 
-[is]: https://github.com/nodef/extra-set/wiki/is
-[values]: https://github.com/nodef/extra-set/wiki/values
-[entries]: https://github.com/nodef/extra-set/wiki/entries
-[from]: https://github.com/nodef/extra-set/wiki/from
-[from$]: https://github.com/nodef/extra-set/wiki/from$
-[compare]: https://github.com/nodef/extra-set/wiki/compare
-[isEqual]: https://github.com/nodef/extra-set/wiki/isEqual
-[size]: https://github.com/nodef/extra-set/wiki/size
-[isEmpty]: https://github.com/nodef/extra-set/wiki/isEmpty
-[add]: https://github.com/nodef/extra-set/wiki/add
-[add$]: https://github.com/nodef/extra-set/wiki/add$
-[remove]: https://github.com/nodef/extra-set/wiki/remove
-[remove$]: https://github.com/nodef/extra-set/wiki/remove$
-[count]: https://github.com/nodef/extra-set/wiki/count
-[countAs]: https://github.com/nodef/extra-set/wiki/countAs
-[min]: https://github.com/nodef/extra-set/wiki/min
-[max]: https://github.com/nodef/extra-set/wiki/max
-[range]: https://github.com/nodef/extra-set/wiki/range
-[head]: https://github.com/nodef/extra-set/wiki/head
-[tail]: https://github.com/nodef/extra-set/wiki/tail
-[take]: https://github.com/nodef/extra-set/wiki/take
-[take$]: https://github.com/nodef/extra-set/wiki/take$
-[drop]: https://github.com/nodef/extra-set/wiki/drop
-[drop$]: https://github.com/nodef/extra-set/wiki/drop$
-[subsets]: https://github.com/nodef/extra-set/wiki/subsets
-[randomValue]: https://github.com/nodef/extra-set/wiki/randomValue
-[randomEntry]: https://github.com/nodef/extra-set/wiki/randomEntry
-[randomSubset]: https://github.com/nodef/extra-set/wiki/randomSubset
-[hasSubset]: https://github.com/nodef/extra-set/wiki/hasSubset
-[has]: https://github.com/nodef/extra-set/wiki/has
-[find]: https://github.com/nodef/extra-set/wiki/find
-[findAll]: https://github.com/nodef/extra-set/wiki/findAll
-[forEach]: https://github.com/nodef/extra-set/wiki/forEach
-[some]: https://github.com/nodef/extra-set/wiki/some
-[every]: https://github.com/nodef/extra-set/wiki/every
-[map]: https://github.com/nodef/extra-set/wiki/map
-[map$]: https://github.com/nodef/extra-set/wiki/map$
-[reduce]: https://github.com/nodef/extra-set/wiki/reduce
-[filter]: https://github.com/nodef/extra-set/wiki/filter
-[filter$]: https://github.com/nodef/extra-set/wiki/filter$
-[reject]: https://github.com/nodef/extra-set/wiki/reject
-[reject$]: https://github.com/nodef/extra-set/wiki/reject$
-[flat]: https://github.com/nodef/extra-set/wiki/flat
-[flatMap]: https://github.com/nodef/extra-set/wiki/flatMap
-[partition]: https://github.com/nodef/extra-set/wiki/partition
-[partitionAs]: https://github.com/nodef/extra-set/wiki/partitionAs
-[chunk]: https://github.com/nodef/extra-set/wiki/chunk
-[concat]: https://github.com/nodef/extra-set/wiki/concat
-[concat$]: https://github.com/nodef/extra-set/wiki/concat$
-[join]: https://github.com/nodef/extra-set/wiki/join
-[isDisjoint]: https://github.com/nodef/extra-set/wiki/isDisjoint
-[union]: https://github.com/nodef/extra-set/wiki/union
-[union$]: https://github.com/nodef/extra-set/wiki/union$
-[intersection]: https://github.com/nodef/extra-set/wiki/intersection
-[intersection$]: https://github.com/nodef/extra-set/wiki/intersection$
-[difference]: https://github.com/nodef/extra-set/wiki/difference
-[difference$]: https://github.com/nodef/extra-set/wiki/difference$
-[symmetricDifference]: https://github.com/nodef/extra-set/wiki/symmetricDifference
-[symmetricDifference$]: https://github.com/nodef/extra-set/wiki/symmetricDifference$
-[cartesianProduct]: https://github.com/nodef/extra-set/wiki/cartesianProduct
+[is]: https://jsr.io/@nodef/extra-set/doc/~/is
+[values]: https://jsr.io/@nodef/extra-set/doc/~/values
+[entries]: https://jsr.io/@nodef/extra-set/doc/~/entries
+[from]: https://jsr.io/@nodef/extra-set/doc/~/from
+[from$]: https://jsr.io/@nodef/extra-set/doc/~/from$
+[compare]: https://jsr.io/@nodef/extra-set/doc/~/compare
+[isEqual]: https://jsr.io/@nodef/extra-set/doc/~/isEqual
+[size]: https://jsr.io/@nodef/extra-set/doc/~/size
+[isEmpty]: https://jsr.io/@nodef/extra-set/doc/~/isEmpty
+[add]: https://jsr.io/@nodef/extra-set/doc/~/add
+[add$]: https://jsr.io/@nodef/extra-set/doc/~/add$
+[remove]: https://jsr.io/@nodef/extra-set/doc/~/remove
+[remove$]: https://jsr.io/@nodef/extra-set/doc/~/remove$
+[count]: https://jsr.io/@nodef/extra-set/doc/~/count
+[countAs]: https://jsr.io/@nodef/extra-set/doc/~/countAs
+[min]: https://jsr.io/@nodef/extra-set/doc/~/min
+[max]: https://jsr.io/@nodef/extra-set/doc/~/max
+[range]: https://jsr.io/@nodef/extra-set/doc/~/range
+[head]: https://jsr.io/@nodef/extra-set/doc/~/head
+[tail]: https://jsr.io/@nodef/extra-set/doc/~/tail
+[take]: https://jsr.io/@nodef/extra-set/doc/~/take
+[take$]: https://jsr.io/@nodef/extra-set/doc/~/take$
+[drop]: https://jsr.io/@nodef/extra-set/doc/~/drop
+[drop$]: https://jsr.io/@nodef/extra-set/doc/~/drop$
+[subsets]: https://jsr.io/@nodef/extra-set/doc/~/subsets
+[randomValue]: https://jsr.io/@nodef/extra-set/doc/~/randomValue
+[randomEntry]: https://jsr.io/@nodef/extra-set/doc/~/randomEntry
+[randomSubset]: https://jsr.io/@nodef/extra-set/doc/~/randomSubset
+[hasSubset]: https://jsr.io/@nodef/extra-set/doc/~/hasSubset
+[has]: https://jsr.io/@nodef/extra-set/doc/~/has
+[find]: https://jsr.io/@nodef/extra-set/doc/~/find
+[findAll]: https://jsr.io/@nodef/extra-set/doc/~/findAll
+[forEach]: https://jsr.io/@nodef/extra-set/doc/~/forEach
+[some]: https://jsr.io/@nodef/extra-set/doc/~/some
+[every]: https://jsr.io/@nodef/extra-set/doc/~/every
+[map]: https://jsr.io/@nodef/extra-set/doc/~/map
+[map$]: https://jsr.io/@nodef/extra-set/doc/~/map$
+[reduce]: https://jsr.io/@nodef/extra-set/doc/~/reduce
+[filter]: https://jsr.io/@nodef/extra-set/doc/~/filter
+[filter$]: https://jsr.io/@nodef/extra-set/doc/~/filter$
+[reject]: https://jsr.io/@nodef/extra-set/doc/~/reject
+[reject$]: https://jsr.io/@nodef/extra-set/doc/~/reject$
+[flat]: https://jsr.io/@nodef/extra-set/doc/~/flat
+[flatMap]: https://jsr.io/@nodef/extra-set/doc/~/flatMap
+[partition]: https://jsr.io/@nodef/extra-set/doc/~/partition
+[partitionAs]: https://jsr.io/@nodef/extra-set/doc/~/partitionAs
+[chunk]: https://jsr.io/@nodef/extra-set/doc/~/chunk
+[concat]: https://jsr.io/@nodef/extra-set/doc/~/concat
+[concat$]: https://jsr.io/@nodef/extra-set/doc/~/concat$
+[join]: https://jsr.io/@nodef/extra-set/doc/~/join
+[isDisjoint]: https://jsr.io/@nodef/extra-set/doc/~/isDisjoint
+[union]: https://jsr.io/@nodef/extra-set/doc/~/union
+[union$]: https://jsr.io/@nodef/extra-set/doc/~/union$
+[intersection]: https://jsr.io/@nodef/extra-set/doc/~/intersection
+[intersection$]: https://jsr.io/@nodef/extra-set/doc/~/intersection$
+[difference]: https://jsr.io/@nodef/extra-set/doc/~/difference
+[difference$]: https://jsr.io/@nodef/extra-set/doc/~/difference$
+[symmetricDifference]: https://jsr.io/@nodef/extra-set/doc/~/symmetricDifference
+[symmetricDifference$]: https://jsr.io/@nodef/extra-set/doc/~/symmetricDifference$
+[cartesianProduct]: https://jsr.io/@nodef/extra-set/doc/~/cartesianProduct
