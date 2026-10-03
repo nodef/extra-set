@@ -2,7 +2,7 @@ A pack of functions for working with Sets.<br>
 
 ▌
 📦 [JSR](https://jsr.io/@nodef/extra-set),
-📦 [NPM](https://www.npmjs.com/package/extra-set),
+📦 [NPM](https://www.npmjs.com/package/@nodef/extra-set),
 📰 [Docs](https://jsr.io/@nodef/extra-set/doc).
 
 A [Set] is a collection of unique values. This package includes common set
